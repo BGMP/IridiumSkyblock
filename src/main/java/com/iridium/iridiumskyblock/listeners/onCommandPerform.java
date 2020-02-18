@@ -12,7 +12,7 @@ public class onCommandPerform implements Listener {
 
     @EventHandler
     public void onCommandPerform(PlayerCommandPreprocessEvent event) {
-        if (event.getMessage().equalsIgnoreCase("/fly")) {
+        if (event.getMessage().equalsIgnoreCase("/fly") || event.getMessage().equalsIgnoreCase("/is fly") || event.getMessage().equalsIgnoreCase("/island fly")) {
             try {
                 User u = User.getUser(event.getPlayer());
                 Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(event.getPlayer().getLocation());
