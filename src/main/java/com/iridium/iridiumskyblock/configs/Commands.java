@@ -10,7 +10,6 @@ public class Commands {
     public RegenCommand regenCommand = new RegenCommand();
     public InviteCommand inviteCommand = new InviteCommand();
     public JoinCommand joinCommand = new JoinCommand();
-    public MissionsCommand missionsCommand = new MissionsCommand();
     public UpgradeCommand upgradeCommand = new UpgradeCommand();
     public BoosterCommand boosterCommand = new BoosterCommand();
     public CrystalsCommand crystalsCommand = new CrystalsCommand();
@@ -44,6 +43,5 @@ public class Commands {
     public BankCommand bankCommand = new BankCommand();
     public ChatCommand chatCommand = new ChatCommand();
     public ShopCommand shopCommand = new ShopCommand();
-    public BiomeCommand biomeCommand = new BiomeCommand();
     public HelpCommand helpCommand = new HelpCommand();
 }

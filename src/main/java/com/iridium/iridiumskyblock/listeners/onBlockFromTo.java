@@ -27,7 +27,6 @@ public class onBlockFromTo implements Listener {
                 }
             }
         }
-        if (!IridiumSkyblock.getUpgrades().oresUpgrade.enabled) return;
         try {
             if (e.getFace() != BlockFace.DOWN) {
                 Block b = e.getToBlock();

@@ -156,7 +156,7 @@ public class Island {
         value = 0;
         warps = new ArrayList<>();
         startvalue = -1;
-        borderColor = NMSUtils.Color.Blue;
+        borderColor = NMSUtils.Color.Off;
         visit = IridiumSkyblock.getConfiguration().defaultIslandPublic;
         permissions = (HashMap<Role, Permissions>) IridiumSkyblock.getConfiguration().defaultPermissions.clone();
         this.coop = new HashSet<>();
@@ -365,7 +365,7 @@ public class Island {
     }
 
     public void addWarp(Player player, Location location, String name, String password) {
-        if (warps.size() < IridiumSkyblock.getUpgrades().warpUpgrade.upgrades.get(warpLevel).size) {
+        if (warps.size() < 20) {
             warps.add(new Warp(location, name, password));
             player.sendMessage(Utils.color(IridiumSkyblock.getMessages().warpAdded.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
         } else {
@@ -374,7 +374,7 @@ public class Island {
     }
 
     public void addUser(User user) {
-        if (members.size() < IridiumSkyblock.getUpgrades().memberUpgrade.upgrades.get(memberLevel).size) {
+        if (members.size() < 20) {
 
             for (String player : members) {
                 User u = User.getUser(player);

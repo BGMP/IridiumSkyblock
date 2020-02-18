@@ -165,7 +165,28 @@ public class IridiumSkyblock extends JavaPlugin {
                 shopGUI = new ShopGUI();
                 visitGUI = new HashMap<>();
 
-                registerListeners(new onBlockPiston(), new onEntityPickupItem(), new onPlayerTalk(), new onItemCraft(), new onPlayerTeleport(), new onPlayerPortal(), new onBlockBreak(), new onBlockPlace(), new onClick(), new onBlockFromTo(), new onSpawnerSpawn(), new onEntityDeath(), new onPlayerJoinLeave(), new onBlockGrow(), new onPlayerTalk(), new onPlayerMove(), new onEntityDamageByEntity(), new onPlayerExpChange(), new onPlayerFish(), new onEntityExplode());
+                registerListeners(new onBlockPiston(),
+                        new onEntityPickupItem(),
+                        new onPlayerTalk(),
+                        new onItemCraft(),
+                        new onPlayerTeleport(),
+                        new onPlayerPortal(),
+                        new onBlockBreak(),
+                        new onBlockPlace(),
+                        new onClick(),
+                        new onBlockFromTo(),
+                        new onSpawnerSpawn(),
+                        new onEntityDeath(),
+                        new onPlayerJoinLeave(),
+                        new onBlockGrow(),
+                        new onPlayerTalk(),
+                        new onPlayerMove(),
+                        new onEntityDamageByEntity(),
+                        new onPlayerExpChange(),
+                        new onPlayerFish(),
+                        new onEntityExplode(),
+                        new onCommandPerform()
+                );
 
                 Bukkit.getScheduler().scheduleAsyncRepeatingTask(IridiumSkyblock.getInstance(), this::saveIslandManager, 0, 20 * 60);
 
@@ -525,51 +546,10 @@ public class IridiumSkyblock extends JavaPlugin {
 
         getBlockValues().blockvalue.remove(MultiversionMaterials.AIR);
 
-        oreUpgradeCache.clear();
-        for (int i : getUpgrades().oresUpgrade.upgrades.keySet()) {
-            ArrayList<String> items = new ArrayList<>();
-            for (String item : getUpgrades().oresUpgrade.upgrades.get(i).ores) {
-                if (item != null) {
-                    int i1 = Integer.parseInt(item.split(":")[1]);
-                    for (int a = 0; a <= i1; a++) {
-                        items.add(item.split(":")[0]);
-                    }
-                } else {
-                    getUpgrades().oresUpgrade.upgrades.get(i).ores.remove(null);
-                }
-            }
-            oreUpgradeCache.put(i, items);
-        }
-
-        netherOreUpgradeCache.clear();
-        for (int i : getUpgrades().oresUpgrade.upgrades.keySet()) {
-            ArrayList<String> items = new ArrayList<>();
-            for (String item : getUpgrades().oresUpgrade.upgrades.get(i).netherores) {
-                if (item != null) {
-                    int i1 = Integer.parseInt(item.split(":")[1]);
-                    for (int a = 0; a <= i1; a++) {
-                        items.add(item.split(":")[0]);
-                    }
-                } else {
-                    getUpgrades().oresUpgrade.upgrades.get(i).netherores.remove(null);
-                }
-            }
-            netherOreUpgradeCache.put(i, items);
-        }
-
-        if (getBoosters().flightBooster.time == 0) getBoosters().flightBooster.time = 3600;
-        if (getBoosters().experianceBooster.time == 0) getBoosters().experianceBooster.time = 3600;
-        if (getBoosters().farmingBooster.time == 0) getBoosters().farmingBooster.time = 3600;
         if (getBoosters().spawnerBooster.time == 0) getBoosters().spawnerBooster.time = 3600;
 
         if (getBoosters().spawnerBooster.crystalsCost == 0 && getBoosters().spawnerBooster.vaultCost == 0)
             getBoosters().spawnerBooster.crystalsCost = 15;
-        if (getBoosters().farmingBooster.crystalsCost == 0 && getBoosters().farmingBooster.vaultCost == 0)
-            getBoosters().farmingBooster.crystalsCost = 15;
-        if (getBoosters().experianceBooster.crystalsCost == 0 && getBoosters().experianceBooster.vaultCost == 0)
-            getBoosters().experianceBooster.crystalsCost = 15;
-        if (getBoosters().flightBooster.crystalsCost == 0 && getBoosters().flightBooster.vaultCost == 0)
-            getBoosters().flightBooster.crystalsCost = 15;
 
         if (getConfiguration().blockvalue != null) {
             getBlockValues().blockvalue = (HashMap<MultiversionMaterials, Integer>) getConfiguration().blockvalue.clone();
@@ -601,14 +581,10 @@ public class IridiumSkyblock extends JavaPlugin {
                 if (island.getBoosterGUI() != null) island.getBoosterGUI().getInventory().clear();
                 if (island.getCoopGUI() != null) island.getCoopGUI().getInventory().clear();
                 if (island.getMembersGUI() != null) island.getMembersGUI().getInventory().clear();
-                if (island.getMissionsGUI() != null) island.getMissionsGUI().getInventory().clear();
                 if (island.getPermissionsGUI() != null) island.getPermissionsGUI().getInventory().clear();
                 if (island.getUpgradeGUI() != null) island.getUpgradeGUI().getInventory().clear();
                 if (island.getWarpGUI() != null) island.getWarpGUI().getInventory().clear();
                 if (island.getBorderColorGUI() != null) island.getBorderColorGUI().getInventory().clear();
-                if(getConfiguration().missionRestart==MissionRestart.Instantly){
-                    island.resetMissions();
-                }
             }
         }
         try {

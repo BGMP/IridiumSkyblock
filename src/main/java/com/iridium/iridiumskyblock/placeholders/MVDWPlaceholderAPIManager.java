@@ -90,15 +90,6 @@ public class MVDWPlaceholderAPIManager {
             return user.getIsland() != null ? user.getIsland().getMemberLevel() + "" : "N/A";
         });
 
-        PlaceholderAPI.registerPlaceholder(IridiumSkyblock.getInstance(), "iridiumskyblock_island_upgrade_member_amount", e -> {
-            Player player = e.getPlayer();
-            if (player == null) {
-                return "N/A";
-            }
-            User user = User.getUser(player);
-            return user.getIsland() != null ? IridiumSkyblock.getUpgrades().memberUpgrade.upgrades.get(user.getIsland().getMemberLevel()).size + "" : "N/A";
-        });
-
         PlaceholderAPI.registerPlaceholder(IridiumSkyblock.getInstance(), "iridiumskyblock_island_upgrade_size_level", e -> {
             Player player = e.getPlayer();
             if (player == null) {

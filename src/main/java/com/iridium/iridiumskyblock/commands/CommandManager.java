@@ -35,7 +35,6 @@ public class CommandManager implements CommandExecutor, TabCompleter {
         registerCommand(IridiumSkyblock.getCommands().kickCommand);
         registerCommand(IridiumSkyblock.getCommands().leaveCommand);
         registerCommand(IridiumSkyblock.getCommands().membersCommand);
-        registerCommand(IridiumSkyblock.getCommands().missionsCommand);
         registerCommand(IridiumSkyblock.getCommands().privateCommand);
         registerCommand(IridiumSkyblock.getCommands().publicCommand);
         registerCommand(IridiumSkyblock.getCommands().regenCommand);
@@ -63,7 +62,6 @@ public class CommandManager implements CommandExecutor, TabCompleter {
         registerCommand(IridiumSkyblock.getCommands().chatCommand);
         registerCommand(IridiumSkyblock.getCommands().giveUpgradeCommand);
         if (IridiumSkyblock.getConfiguration().islandShop) registerCommand(IridiumSkyblock.getCommands().shopCommand);
-        registerCommand(IridiumSkyblock.getCommands().biomeCommand);
         registerCommand(IridiumSkyblock.getCommands().helpCommand);
     }
 

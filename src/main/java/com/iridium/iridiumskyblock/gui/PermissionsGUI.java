@@ -1,14 +1,20 @@
 package com.iridium.iridiumskyblock.gui;
 
 import com.iridium.iridiumskyblock.*;
+import com.iridium.iridiumskyblock.configs.Inventories;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class PermissionsGUI extends GUI implements Listener {
 
@@ -20,10 +26,12 @@ public class PermissionsGUI extends GUI implements Listener {
         super(island, IridiumSkyblock.getInventories().permissionsGUISize, IridiumSkyblock.getInventories().permissionsGUITitle);
         IridiumSkyblock.getInstance().registerListeners(this);
         int i = 11;
+        int j = 0;
         for (Role role : Role.values()) {
             permissions.put(role, new PermissionsGUI(island, role));
-            setItem(i, Utils.makeItem(IridiumSkyblock.getInventories().islandRoles, Collections.singletonList(new Utils.Placeholder("role", role.toString()))));
+            setItem(i, Utils.makeItem(IridiumSkyblock.getInventories().islandRoles[j], Collections.singletonList(new Utils.Placeholder("role", role.toString()))));
             i++;
+            j++;
         }
     }
 
@@ -39,13 +47,17 @@ public class PermissionsGUI extends GUI implements Listener {
             int i = 0;
             try {
                 for (Field field : Permissions.class.getDeclaredFields()) {
+                    Permission permission = field.getAnnotation(Permission.class);
+
                     Object object = field.get(getIsland().getPermissions(role));
                     if (object instanceof Boolean) {
-                        if ((Boolean) object) {
-                            setItem(i, Utils.makeItem(IridiumSkyblock.getInventories().islandPermissionAllow, Collections.singletonList(new Utils.Placeholder("permission", IridiumSkyblock.getMessages().permissions.getOrDefault(field.getName(), field.getName())))));
-                        } else {
-                            setItem(i, Utils.makeItem(IridiumSkyblock.getInventories().islandPermissionDeny, Collections.singletonList(new Utils.Placeholder("permission", IridiumSkyblock.getMessages().permissions.getOrDefault(field.getName(), field.getName())))));
-                        }
+                        List<String> stateLore;
+
+                        if ((Boolean) object) stateLore = Arrays.asList(ChatColor.GREEN.toString() + ChatColor.BOLD + "ENABLED");
+                        else stateLore = Arrays.asList(ChatColor.RED.toString() + ChatColor.BOLD + "DISABLED");
+
+                        Inventories.Item icon = new Inventories.Item(permission.icon(), 1, "&b" + permission.name(), stateLore);
+                        setItem(i, Utils.makeItem(icon, Collections.singletonList(new Utils.Placeholder("permission", IridiumSkyblock.getMessages().permissions.getOrDefault(field.getName(), field.getName())))));
                     }
                     i++;
                 }
