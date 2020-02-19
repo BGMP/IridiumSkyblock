@@ -35,6 +35,8 @@ public class FlyCommand extends Command {
                 } else {
                     p.sendMessage(Utils.color(IridiumSkyblock.getMessages().flightBoosterNotActive.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 }
+            }else{
+                p.sendMessage(Utils.color(IridiumSkyblock.getMessages().mustBeInIsland.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
             }
         } else {
             p.sendMessage(Utils.color(IridiumSkyblock.getMessages().noIsland.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
