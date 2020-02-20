@@ -6,13 +6,14 @@ import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class HomeCommand extends Command {
 
     public HomeCommand() {
-        super(Collections.singletonList("home"),"Teleport to your island home", "", true);
+        super(Arrays.asList("home", "go"),"Teleport to your island home", "", true);
     }
 
     @Override
