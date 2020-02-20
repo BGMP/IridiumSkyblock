@@ -47,7 +47,7 @@ public class onPlayerMove implements Listener {
             User user = User.getUser(e.getPlayer());
             Island island = user.getIsland();
             if (island != null) {
-                if (user.flying && !island.isInIsland(e.getPlayer().getLocation()) && !e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+                if (user.flying && (!island.isInIsland(e.getPlayer().getLocation()) || island.getFlightBooster() == 0) && !e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
                     e.getPlayer().setAllowFlight(false);
                     e.getPlayer().setFlying(false);
                     user.flying = false;
