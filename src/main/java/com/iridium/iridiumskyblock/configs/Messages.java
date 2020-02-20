@@ -94,6 +94,12 @@ public class Messages {
     public String createCooldown = "%prefix% &7Island creation is on cooldown for %minutes% Minutes and %seconds% Seconds";
     public String islandDeleted = "%prefix% &7Your island has been deleted";
     public String mustBeInIsland = "%prefix% &7You must be in your island to do this.";
+    public String depositSuccess = "%prefix% &7Successfully deposited &a%amount% &7into your Island";
+    public String withdrawCommand = "%prefix% &7Successfully withdrawed &a%amount% &7from your Island";
+    public String depositAdvice = "%prefix% &7Deposit command: &a/is deposit (amount)";
+    public String withdrawAdvice = "%prefix% &7Withdraw command: &a/is withdraw (amount)";
+    public String cantDeposit = "%prefix% &7You cannot afford this deposit";
+    public String cantWithdraw = "%prefix% &7Not enough Island balance";
 
     public HashMap<Role, String> roles = new HashMap<Role, String>() {{
         for (Role role : Role.values()) {

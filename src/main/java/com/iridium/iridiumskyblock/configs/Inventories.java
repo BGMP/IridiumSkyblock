@@ -52,7 +52,9 @@ public class Inventories {
     //Bank
     // public Item experience = new Item(MultiversionMaterials.EXPERIENCE_BOTTLE, 11, 1, "&b&lIsland Experience", Arrays.asList("&7{experience} Experience", "&b&l[!] &bLeft click to withdraw", "&b&l[!] &bRight click to deposit"));
     // public Item crystals = new Item(MultiversionMaterials.NETHER_STAR, 13, 1, "&b&lIsland Crystals", Arrays.asList("&7{crystals} Crystals", "&b&l[!] &bLeft click to withdraw", "&b&l[!] &bRight click to deposit"));
-    public Item money = new Item(MultiversionMaterials.PAPER, 13, 1, "&b&lIsland Money", Arrays.asList("&7${money}", "&b&l[!] &bLeft click to withdraw", "&b&l[!] &bRight click to deposit"));
+    public Item deposit = new Item(MultiversionMaterials.IRON_INGOT, 11, 1, "&6&lDeposit", Arrays.asList("&7Deposit money into Island"));
+    public Item withdraw = new Item(MultiversionMaterials.GOLD_INGOT, 13, 1, "&b&lWithdraw", Arrays.asList("&7Withdraw money from Island"));
+    public Item money = new Item(MultiversionMaterials.PAPER, 15, 1, "&b&lBalance", Arrays.asList("&7Current Balance is: &a${money}"));
 
     public Item crystal = new Item(MultiversionMaterials.NETHER_STAR, 1, "&b*** &b&lIsland Crystal &b***", Arrays.asList("", "&b&l[!] &bto Redeem, go to your Island Bank"));
 

@@ -60,6 +60,8 @@ public class CommandManager implements CommandExecutor, TabCompleter {
         registerCommand(IridiumSkyblock.getCommands().bankCommand);
         registerCommand(IridiumSkyblock.getCommands().chatCommand);
         registerCommand(IridiumSkyblock.getCommands().giveUpgradeCommand);
+        registerCommand(IridiumSkyblock.getCommands().depositCommand);
+        registerCommand(IridiumSkyblock.getCommands().withdrawCommand);
         if (IridiumSkyblock.getConfiguration().islandShop) registerCommand(IridiumSkyblock.getCommands().shopCommand);
         registerCommand(IridiumSkyblock.getCommands().helpCommand);
     }
