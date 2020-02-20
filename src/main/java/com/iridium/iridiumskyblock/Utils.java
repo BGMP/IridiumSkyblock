@@ -266,11 +266,7 @@ public class Utils {
     public static String processIslandPlaceholders(String line, Island island) {
         List<Placeholder> placeholders = new ArrayList<>(Arrays.asList(
                 // Upgrades
-                new Placeholder("sizevaultcost", IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.containsKey(island.getSizeLevel() + 1) ? IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(island.getSizeLevel() + 1).vaultCost + "" : IridiumSkyblock.getMessages().maxlevelreached),
-
-                new Placeholder("sizecrystalscost", IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.containsKey(island.getSizeLevel() + 1) ? IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(island.getSizeLevel() + 1).crystalsCost + "" : IridiumSkyblock.getMessages().maxlevelreached),
-
-                new Placeholder("sizecost", IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.containsKey(island.getSizeLevel() + 1) ? IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(island.getSizeLevel() + 1).crystalsCost + "" : IridiumSkyblock.getMessages().maxlevelreached),
+                new Placeholder("sizecost", IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.containsKey(island.getSizeLevel() + 1) ? IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(island.getSizeLevel() + 1).vaultCost + "" : IridiumSkyblock.getMessages().maxlevelreached),
 
                 new Placeholder("sizeblocks", IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(island.getSizeLevel()).size + ""),
 
@@ -293,7 +289,6 @@ public class Utils {
                 new Placeholder("farmingbooster_minutes", (int) Math.floor(island.getFarmingBooster() / 60.00) + ""),
                 new Placeholder("expbooster_minutes", (int) Math.floor(island.getExpBooster() / 60.00) + ""),
                 new Placeholder("flightbooster_minutes", (int) Math.floor(island.getFlightBooster() / 60.00) + ""),
-                new Placeholder("spawnerbooster_crystalcost", IridiumSkyblock.getBoosters().spawnerBooster.crystalsCost + ""),
                 new Placeholder("spawnerbooster_vaultcost", IridiumSkyblock.getBoosters().spawnerBooster.vaultCost + ""),
 
                 //Bank
@@ -355,28 +350,18 @@ public class Utils {
         }
     }
 
-    public static boolean canBuy(Player p, int vault, int crystals) {
+    public static boolean canBuy(Player p, int vault) {
         User u = User.getUser(p);
         if (u.getIsland() != null) {
             if (Vault.econ != null) {
-                boolean canbuy = (Vault.econ.getBalance(p) >= vault || u.getIsland().money >= vault) && u.getIsland().getCrystals() >= crystals;
-                if (canbuy) {
-                    u.getIsland().setCrystals(u.getIsland().getCrystals() - crystals);
-                    if (u.getIsland().money >= vault) {
-                        u.getIsland().money -= vault;
-                    } else {
-                        Vault.econ.withdrawPlayer(p, vault);
-                    }
-                }
+                boolean canbuy = Vault.econ.getBalance(p) >= vault;
+                if (canbuy) Vault.econ.withdrawPlayer(p, vault);
                 return canbuy;
             } else {
-                boolean canbuy = u.getIsland().getCrystals() >= crystals && vault == 0;
-                if (canbuy) {
-                    u.getIsland().setCrystals(u.getIsland().getCrystals() - crystals);
-                }
-                return canbuy;
+                p.sendMessage(ChatColor.RED + "There is no economy on this server!");
+                return false;
             }
-        } else if (crystals == 0 && Vault.econ != null) {
+        } else if (Vault.econ != null) {
             boolean canbuy = Vault.econ.getBalance(p) >= vault;
             if (canbuy) {
                 Vault.econ.withdrawPlayer(p, vault);

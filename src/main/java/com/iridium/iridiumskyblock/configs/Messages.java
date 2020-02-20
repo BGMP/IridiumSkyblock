@@ -24,14 +24,9 @@ public class Messages {
     public String flightDisabled = "%prefix% &7Your flight has been disabled.";
     public String flightEnabled = "%prefix% &7Your flight has been enabled.";
     public String flightBoosterNotActive = "%prefix% &7Your flight booster is not active.";
-    public String notEnoughCrystals = "%prefix% &7You don't have enough island crystals.";
     public String maxLevelReached = "%prefix% &7Maximum level reached.";
-    public String crystalAmount = "%prefix% &7You have %crystals% crystals.";
     public String maxMemberCount = "%prefix% &7Maximum member count reached.";
     public String spawnerBoosterActive = "%prefix% &7Your spawner booster is already active.";
-    public String farmingBoosterActive = "%prefix% &7Your farming booster is already active.";
-    public String expBoosterActive = "%prefix% &7Your Experience booster is already active.";
-    public String flightBoosterActive = "%prefix% &7Your flight booster is already active.";
     public String noActiveInvites = "%prefix% &7You do not have any active invites for this island.";
     public String giveCrystals = "%prefix% &7You gave %player% %crystals% crystals.";
     public String givenCrystals = "%prefix% &7You have been given %crystals% crystals by %player%.";
@@ -86,8 +81,8 @@ public class Messages {
     public String deleteAction = "Delete your Island";
     public String visitingIsland = "%prefix% &7Teleporting to %player%'s Island";
     public String visitedYourIsland = "%prefix% &7%player% is visiting your island.";
-    public String cantBuy = "%prefix% &7You dont have enough money to buy this.";
-    public String cantSell = "%prefix% &7You dont have this item to sell.";
+    public String cantBuy = "%prefix% &7You don't have enough money to buy this.";
+    public String cantSell = "%prefix% &7You don't have this item to sell.";
     public String islandInterest = "%prefix% &7Your island interest has been applied giving you %crystals%Crystals $%money% and %exp%Experience.";
     public String helpfooter = "&b<< &7Page %page% of %maxpage% &b>>";
     public String previousPage = "<<";

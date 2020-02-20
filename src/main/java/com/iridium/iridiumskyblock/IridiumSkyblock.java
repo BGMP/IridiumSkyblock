@@ -548,9 +548,6 @@ public class IridiumSkyblock extends JavaPlugin {
 
         if (getBoosters().spawnerBooster.time == 0) getBoosters().spawnerBooster.time = 3600;
 
-        if (getBoosters().spawnerBooster.crystalsCost == 0 && getBoosters().spawnerBooster.vaultCost == 0)
-            getBoosters().spawnerBooster.crystalsCost = 15;
-
         if (getConfiguration().blockvalue != null) {
             getBlockValues().blockvalue = (HashMap<MultiversionMaterials, Integer>) getConfiguration().blockvalue.clone();
             getConfiguration().blockvalue = null;

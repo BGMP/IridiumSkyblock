@@ -34,10 +34,10 @@ public class BoosterGUI extends GUI implements Listener {
             if (e.getClickedInventory() == null || !e.getClickedInventory().equals(getInventory())) return;
             if (e.getSlot() == IridiumSkyblock.getBoosters().spawnerBooster.slot && IridiumSkyblock.getBoosters().spawnerBooster.enabled) {
                 if (getIsland().getSpawnerBooster() == 0) {
-                    if (Utils.canBuy(p, IridiumSkyblock.getBoosters().spawnerBooster.vaultCost, IridiumSkyblock.getBoosters().spawnerBooster.crystalsCost)) {
+                    if (Utils.canBuy(p, IridiumSkyblock.getBoosters().spawnerBooster.vaultCost)) {
                         getIsland().setSpawnerBooster(IridiumSkyblock.getBoosters().spawnerBooster.time);
                     } else {
-                        e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().notEnoughCrystals.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                        e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().cantBuy.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                     }
                 } else {
                     e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().spawnerBoosterActive.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
