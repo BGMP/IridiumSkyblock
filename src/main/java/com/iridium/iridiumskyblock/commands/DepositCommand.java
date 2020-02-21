@@ -36,11 +36,6 @@ public class DepositCommand extends Command {
         Island island = user.getIsland();
         if (island == null) player.sendMessage(ChatColor.RED + "You must have an island to deposit your money into!");
 
-        if (Vault.econ == null) {
-            player.sendMessage(ChatColor.RED + "The server has no economy.");
-            return;
-        }
-
         String amountInput = args[1];
         try {
             int amount = Integer.parseInt(amountInput);
