@@ -21,7 +21,7 @@ public class FlyCommand extends Command {
         User user = User.getUser(p);
         if (user.getIsland() != null) {
             if (user.getIsland().isInIsland(p.getLocation())) {
-                if (user.getIsland().getFlightBooster() != 0 || p.hasPermission("iridiumskyblock.Fly")) {
+                if (p.hasPermission("iridiumskyblock.Fly")) {
                     if (p.getAllowFlight()) {
                         p.setAllowFlight(false);
                         p.setFlying(false);
