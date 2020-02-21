@@ -68,7 +68,6 @@ public class Island {
     private transient IslandMenuGUI islandMenuGUI;
     private transient CoopGUI coopGUI;
     private transient BankGUI bankGUI;
-    private transient BiomeGUI biomeGUI;
 
     private int id;
 
@@ -445,7 +444,6 @@ public class Island {
         islandMenuGUI = new IslandMenuGUI(this);
         coopGUI = new CoopGUI(this);
         bankGUI = new BankGUI(this);
-        biomeGUI = new BiomeGUI(this);
         failedGenerators = new HashSet<>();
         coopInvites = new HashSet<>();
         boosterid = Bukkit.getScheduler().scheduleAsyncRepeatingTask(IridiumSkyblock.getInstance(), () -> {
@@ -983,10 +981,6 @@ public class Island {
 
     public int getId() {
         return id;
-    }
-
-    public BiomeGUI getBiomeGUI() {
-        return biomeGUI;
     }
 
     public BankGUI getBankGUI() {
