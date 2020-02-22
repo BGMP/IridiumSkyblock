@@ -7,22 +7,23 @@ import java.util.*;
 public class Inventories {
 
 
-    public String upgradeGUITitle = "&7Upgrade";
-    public String boosterGUITitle = "&7Booster";
-    public String confirmationGUITitle = "&7Are you sure?";
-    public String missionsGUITitle = "&7Missions";
-    public String membersGUITitle = "&7Members";
-    public String coopGUITitle = "&7Co-op Islands";
-    public String islandMenuGUITitle = "&7Menu";
-    public String warpGUITitle = "&7Warps";
-    public String topGUITitle = "&7Top Islands";
-    public String borderColorGUITitle = "&7Border Color";
-    public String permissionsGUITitle = "&7Permissions";
-    public String schematicselectGUITitle = "&7Select an Island";
-    public String bankGUITitle = "&7Island Bank";
-    public String visitGUITitle = "&7Visit an Island";
-    public String shopGUITitle = "&7Island Shop";
-    public String biomeGUITitle = "&7Island Biome";
+    public String upgradeGUITitle = "&bUpgrade";
+    public String boosterGUITitle = "&bBooster";
+    public String confirmationGUITitle = "&b7Are you sure?";
+    public String missionsGUITitle = "&bMissions";
+    public String membersGUITitle = "&bMembers";
+    public String coopGUITitle = "&bCo-op Islands";
+    public String islandMenuGUITitle = "&bMenu";
+    public String warpGUITitle = "&bWarps";
+    public String topGUITitle = "&bTop Islands";
+    public String borderColorGUITitle = "&bBorder Color";
+    public String permissionsGUITitle = "&bPermissions";
+    public String schematicselectGUITitle = "&bSelect an Island";
+    public String bankGUITitle = "&bIsland Bank";
+    public String visitGUITitle = "&bVisit an Island";
+    public String shopGUITitle = "&bIsland Shop";
+    public String flagsGUITitle = "&bIsland Flags";
+    public String globalsGUITitle = "&bGlobal Flags";
 
     public int upgradeGUISize = 27;
     public int boosterGUISize = 27;
@@ -38,7 +39,8 @@ public class Inventories {
     public int bankGUISize = 27;
     public int visitGUISize = 54;
     public int shopGUISize = 54;
-    public int biomeGUISize = 54;
+    public int flagsGUISize = 27;
+    public int globalsGUISize = 27;
 
     //Boosters
     public Item spawner = new Item(MultiversionMaterials.SPAWNER, 1, "&b&lIncreased Mobs", Arrays.asList("&7Are your spawners too slow? Buy this", "&7booster and increase spawner rates x2.", "", "&b&lInformation:", "&b&l * &7Time Remaining: &b{spawnerbooster_minutes} minutes and {spawnerbooster_seconds}seconds", "&b&l * &7Booster Cost: &b{spawnerbooster_crystalcost} Crystals and ${spawnerbooster_vaultcost}", "", "&b&l[!] &bRight Click to Purchase this Booster."));
@@ -105,13 +107,25 @@ public class Inventories {
         put(new Item(MultiversionMaterials.GRASS, 36, 1, "&b&lIsland Regen", Collections.singletonList("&7Regenerate your island.")), "is regen");
         put(new Item(MultiversionMaterials.PLAYER_HEAD, 21, 1, "&b&lIsland Upgrades", "ABigDwarf", Collections.singletonList("&7Upgrade your island.")), "is upgrade");
         put(new Item(MultiversionMaterials.EXPERIENCE_BOTTLE, 23, 1, "&b&lIsland Boosters", Collections.singletonList("&7Boost your island.")), "is booster");
-        put(new Item(MultiversionMaterials.BOOK, 31, 1, "&b&lIsland Permissions", Collections.singletonList("&7Change island permissions.")), "is permissions");
+        put(new Item(MultiversionMaterials.BOOK, 31, 1, "&b&lIsland Flags & Permissions", Collections.singletonList("&7Change island global flags & permissions.")), "is flags");
         put(new Item(MultiversionMaterials.DIAMOND, 0, 1, "&b&lIsland Top", Collections.singletonList("&7View top islands.")), "is top");
         put(new Item(MultiversionMaterials.END_PORTAL_FRAME, 12, 1, "&b&lIsland Warps", Collections.singletonList("&7View your island warps.")), "is warps");
         put(new Item(MultiversionMaterials.BEACON, 22, 1, "&b&lIsland Border", Collections.singletonList("&7Change your island border.")), "is border");
         put(new Item(MultiversionMaterials.NAME_TAG, 32, 1, "&b&lIsland Coop", Collections.singletonList("&7View your Co-op Islands.")), "is coop");
         put(new Item(MultiversionMaterials.GOLD_INGOT, 30, 1, "&b&lIsland Bank", Collections.singletonList("&7View your Island Bank.")), "is bank");
         put(new Item(MultiversionMaterials.BARRIER, 44, 1, "&b&lIsland Delete", Collections.singletonList("&7Delete your island.")), "is delete");
+    }};
+
+    public HashMap<Item, String> flags = new HashMap<Item, String>() {{
+        put(new Item(MultiversionMaterials.BLACK_BANNER, 12, 1, "&c&lGlobal Flags", Collections.singletonList("&bGlobal Flags")), "is globals");
+        put(new Item(MultiversionMaterials.WHITE_BANNER, 14, 1, "&a&lIsland Permissions", Collections.singletonList("&bRole-based Island Permissions")), "is permissions");
+    }};
+
+    public HashMap<Item, String> globals = new HashMap<Item, String>() {{
+        put(new Item(MultiversionMaterials.TNT, 12, 1, "&c&l", Collections.singletonList("&bGlobal Flags")), "is globals");
+        put(new Item(MultiversionMaterials.FIRE_CHARGE, 13, 1, "&a&lIsland Permissions", Collections.singletonList("&bRole-based Island Permissions")), "is permissions");
+        put(new Item(MultiversionMaterials.COW_SPAWN_EGG, 14, 1, "&a&lIsland Permissions", Collections.singletonList("&bRole-based Island Permissions")), "is permissions");
+        put(new Item(MultiversionMaterials.ZOMBIE_SPAWN_EGG, 15, 1, "&c&lGlobal Flags", Collections.singletonList("&bGlobal Flags")), "is globals");
     }};
 
     public static class Item {

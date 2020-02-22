@@ -185,7 +185,10 @@ public class IridiumSkyblock extends JavaPlugin {
                         new onPlayerExpChange(),
                         new onPlayerFish(),
                         new onEntityExplode(),
-                        new onCommandPerform()
+                        new onCommandPerform(),
+                        new onExplosionDamagePlayer(),
+                        new onFireSpread(),
+                        new onCreatureSpawn()
                 );
 
                 Bukkit.getScheduler().scheduleAsyncRepeatingTask(IridiumSkyblock.getInstance(), this::saveIslandManager, 0, 20 * 60);

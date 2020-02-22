@@ -45,4 +45,6 @@ public class Commands {
     public HelpCommand helpCommand = new HelpCommand();
     public DepositCommand depositCommand = new DepositCommand();
     public WithdrawCommand withdrawCommand = new WithdrawCommand();
+    public GlobalFlagsCommand globalFlagsCommand = new GlobalFlagsCommand();
+    public FlagsCommand flagsCommand = new FlagsCommand();
 }

@@ -1,12 +1,18 @@
 package com.iridium.iridiumskyblock.configs;
 
+import com.iridium.iridiumskyblock.GlobalPermissions;
+import com.iridium.iridiumskyblock.IridiumSkyblock;
+import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.MissionRestart;
 import com.iridium.iridiumskyblock.MultiversionMaterials;
 import com.iridium.iridiumskyblock.Permissions;
 import com.iridium.iridiumskyblock.Role;
+import com.iridium.iridiumskyblock.gui.GlobalPermission;
 import org.bukkit.block.Biome;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Config {
 
@@ -18,8 +24,8 @@ public class Config {
         }
     }
 
-    public String prefix = "&b&lIridiumSkyblock &8»";
-    public String worldName = "IridiumSkyblock";
+    public String prefix = "&6&lCores&c&lMC &8»";
+    public String worldName = "SkyBlock";
     public String chatRankPlaceholder = "[ISLAND_RANK]";
     public String chatValuePlaceholder = "[ISLAND_VALUE]";
     public String chatNAMEPlaceholder = "[ISLAND_NAME]";
@@ -59,6 +65,9 @@ public class Config {
             }
         }
     }};
+
+    public GlobalPermissions defaultGlobals = new GlobalPermissions(false, false, true, true);
+
     public HashMap<Integer, Integer> islandTopSlots = new HashMap<Integer, Integer>() {{
         put(1, 4);
         put(2, 12);

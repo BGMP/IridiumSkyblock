@@ -68,6 +68,8 @@ public class Island {
     private transient IslandMenuGUI islandMenuGUI;
     private transient CoopGUI coopGUI;
     private transient BankGUI bankGUI;
+    private transient FlagsGUI flagsGUI;
+    private transient GlobalFlagsGUI globalsGUI;
 
     private int id;
 
@@ -107,6 +109,8 @@ public class Island {
     private NMSUtils.Color borderColor;
 
     private HashMap<Role, Permissions> permissions;
+
+    private GlobalPermissions globals;
 
     private String schematic;
 
@@ -158,6 +162,7 @@ public class Island {
         borderColor = NMSUtils.Color.Off;
         visit = IridiumSkyblock.getConfiguration().defaultIslandPublic;
         permissions = (HashMap<Role, Permissions>) IridiumSkyblock.getConfiguration().defaultPermissions.clone();
+        globals = IridiumSkyblock.getConfiguration().defaultGlobals;
         this.coop = new HashSet<>();
         this.bans = new HashSet<>();
         this.votes = new HashSet<>();
@@ -219,6 +224,12 @@ public class Island {
             permissions.put(role, new Permissions());
         }
         return permissions.get(role);
+    }
+
+    public GlobalPermissions getGlobals() {
+        if (globals == null) {
+            return IridiumSkyblock.getConfiguration().defaultGlobals;
+        } else return globals;
     }
 
     public void sendBorder() {
@@ -444,6 +455,8 @@ public class Island {
         islandMenuGUI = new IslandMenuGUI(this);
         coopGUI = new CoopGUI(this);
         bankGUI = new BankGUI(this);
+        flagsGUI = new FlagsGUI(this);
+        globalsGUI = new GlobalFlagsGUI(this);
         failedGenerators = new HashSet<>();
         coopInvites = new HashSet<>();
         boosterid = Bukkit.getScheduler().scheduleAsyncRepeatingTask(IridiumSkyblock.getInstance(), () -> {
@@ -700,6 +713,8 @@ public class Island {
         Bukkit.getScheduler().cancelTask(getIslandMenuGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getCoopGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getBankGUI().scheduler);
+        Bukkit.getScheduler().cancelTask(getFlagsGUI().scheduler);
+        Bukkit.getScheduler().cancelTask(getGlobalsGUI().scheduler);
         if (genearteID != -1) Bukkit.getScheduler().cancelTask(genearteID);
         permissions.clear();
         if (a != -1) Bukkit.getScheduler().cancelTask(a);
@@ -1025,6 +1040,14 @@ public class Island {
 
     public BorderColorGUI getBorderColorGUI() {
         return borderColorGUI;
+    }
+
+    public FlagsGUI getFlagsGUI() {
+        return flagsGUI;
+    }
+
+    public GlobalFlagsGUI getGlobalsGUI() {
+        return globalsGUI;
     }
 
     public int getSpawnerBooster() {
