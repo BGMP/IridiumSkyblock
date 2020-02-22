@@ -45,7 +45,7 @@ public class Config {
     public boolean allowWaterInNether = true;
     public int deleteBackupsAfterDays = 7;
     public int regenCooldown = 3600;
-    public int distance = 151;
+    public int distance = 500;
     public int backupIntervalMinutes = 60;
     public int blocksPerTick = 25;
     public int islandsUpdateInterval = 5;
