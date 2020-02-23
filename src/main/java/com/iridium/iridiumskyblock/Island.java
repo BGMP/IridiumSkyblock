@@ -575,13 +575,13 @@ public class Island {
             }
         }
         if (Utils.isSafe(getHome(), this)) {
-            p.teleport(getHome());
+            p.teleport(getHome().add(0, 2, 0));
             sendBorder(p);
         } else {
             Location loc = Utils.getNewHome(this, this.home);
             if (loc != null) {
                 this.home = loc;
-                p.teleport(this.home);
+                p.teleport(this.home.add(0, 2, 0));
                 sendBorder(p);
             } else {
                 User.getUser(p).teleportingHome = true;
@@ -624,14 +624,14 @@ public class Island {
             }
         }
         if (Utils.isSafe(getNetherhome(), this)) {
-            p.teleport(getNetherhome());
+            p.teleport(getNetherhome().add(0, 2, 0));
             sendBorder(p);
         } else {
 
             Location loc = Utils.getNewHome(this, this.netherhome);
             if (loc != null) {
                 this.netherhome = loc;
-                p.teleport(this.netherhome);
+                p.teleport(this.netherhome.add(0, 2, 0));
                 sendBorder(p);
             } else {
                 User.getUser(p).teleportingHome = true;
