@@ -21,15 +21,18 @@ public class onPlayerMove implements Listener {
                 Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getPlayer().getLocation());
                 if (island != null) {
                     if (e.getPlayer().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getWorld())) {
-                        island.teleportHome(e.getPlayer());
+                        e.getPlayer().performCommand("spawn");
+                        // island.teleportHome(e.getPlayer());
                     } else {
-                        island.teleportNetherHome(e.getPlayer());
+                        e.getPlayer().performCommand("spawn");
+                        // island.teleportNetherHome(e.getPlayer());
                     }
                 } else {
                     User u = User.getUser(e.getPlayer());
                     if (u.getIsland() != null) {
                         if (e.getPlayer().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getWorld())) {
-                            u.getIsland().teleportHome(e.getPlayer());
+                            e.getPlayer().performCommand("spawn");
+                            // u.getIsland().teleportHome(e.getPlayer());
                         } else if (e.getPlayer().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getNetherWorld())) {
                             u.getIsland().teleportNetherHome(e.getPlayer());
                         }
@@ -37,9 +40,11 @@ public class onPlayerMove implements Listener {
                         if (Bukkit.getPluginManager().isPluginEnabled("EssentialsSpawn")) {
                             EssentialsSpawn essentialsSpawn = (EssentialsSpawn) Bukkit.getPluginManager().getPlugin("EssentialsSpawn");
                             Essentials essentials = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
-                            e.getPlayer().teleport(essentialsSpawn.getSpawn(essentials.getUser(e.getPlayer()).getGroup()));
+                            e.getPlayer().performCommand("spawn");
+                            // e.getPlayer().teleport(essentialsSpawn.getSpawn(essentials.getUser(e.getPlayer()).getGroup()));
                         } else {
-                            e.getPlayer().teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
+                            e.getPlayer().performCommand("spawn");
+                            // e.getPlayer().teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
                         }
                     }
                 }
