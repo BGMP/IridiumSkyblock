@@ -156,7 +156,7 @@ public class Island {
         value = 0;
         warps = new ArrayList<>();
         startvalue = -1;
-        borderColor = NMSUtils.Color.Off;
+        borderColor = NMSUtils.Color.Blue;
         visit = IridiumSkyblock.getConfiguration().defaultIslandPublic;
         permissions = (HashMap<Role, Permissions>) IridiumSkyblock.getConfiguration().defaultPermissions.clone();
         globals = IridiumSkyblock.getConfiguration().defaultGlobals;
@@ -211,11 +211,11 @@ public class Island {
 
     public void sendBorder(Player p) {
         if (p.getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getWorld())) {
-            NMSUtils.sendWorldBorder(p, borderColor, IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(sizeLevel).size + 1, getCenter());
+            NMSUtils.sendWorldBorder(p, borderColor, 501 + 1, getCenter());
         } else if (IridiumSkyblock.getConfiguration().netherIslands) {
             Location loc = getCenter().clone();
             loc.setWorld(IridiumSkyblock.getIslandManager().getNetherWorld());
-            NMSUtils.sendWorldBorder(p, borderColor, IridiumSkyblock.getUpgrades().sizeUpgrade.upgrades.get(sizeLevel).size + 1, loc);
+            NMSUtils.sendWorldBorder(p, borderColor, 501, loc);
         }
     }
 
@@ -223,6 +223,7 @@ public class Island {
         NMSUtils.sendWorldBorder(p, borderColor, Integer.MAX_VALUE, getCenter().clone());
     }
 
+    // TODO: Fix top calcs
     public void calculateIslandValue() {
         if (blocks == null) blocks = new ArrayList<>();
         if (blocks.hashCode() == lastblocks) return;

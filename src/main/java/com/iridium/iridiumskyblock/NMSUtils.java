@@ -150,11 +150,7 @@ public class NMSUtils {
 
                 WorldBordersetCenter.invoke(worldBorder, centerLocation.getBlockX() + 0.5, centerLocation.getBlockZ() + 0.5);
 
-                if (color == Color.Off) {
-                    WorldBordersetSize.invoke(worldBorder, Integer.MAX_VALUE);
-                } else {
-                    WorldBordersetSize.invoke(worldBorder, size);
-                }
+                WorldBordersetSize.invoke(worldBorder, size);
 
                 WorldBordersetWarningTime.invoke(worldBorder, 0);
                 WorldBordersetWarningDistance.invoke(worldBorder, 0);
@@ -275,6 +271,6 @@ public class NMSUtils {
     }
 
     public enum Color {
-        Blue, Green, Red, Off
+        Blue, Green, Red
     }
 }

@@ -356,6 +356,7 @@ public class Permissions {
         killMobs = true;
         pickupItems = true;
         fly = true;
+        ban = true;
         manageFlags = true;
         useBeacon = true;
         breakValuables = true;

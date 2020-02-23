@@ -11,7 +11,7 @@ public class Upgrades {
         put(3, new IslandUpgrade(12000000, 150));
         put(4, new IslandUpgrade(24000000, 250));
         put(5, new IslandUpgrade(48000000, 350));
-        put(6, new IslandUpgrade(96000000, 600));
+        put(6, new IslandUpgrade(96000000, 400));
     }});
 
     public static class Upgrade {
