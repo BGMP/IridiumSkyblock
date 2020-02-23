@@ -5,6 +5,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.Utils;
 import com.iridium.iridiumskyblock.configs.Inventories;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -46,6 +47,7 @@ public class GlobalFlagsGUI extends GUI implements Listener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            setItem(45, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -69,6 +71,11 @@ public class GlobalFlagsGUI extends GUI implements Listener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        }
+
+        if (e.getSlot() == 45) {
+            e.getWhoClicked().closeInventory();
+            Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is flags");
         }
     }
 }

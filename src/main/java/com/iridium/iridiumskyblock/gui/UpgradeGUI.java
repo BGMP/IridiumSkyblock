@@ -4,6 +4,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.Utils;
 import com.iridium.iridiumskyblock.configs.Upgrades;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,6 +24,7 @@ public class UpgradeGUI extends GUI implements Listener {
         if (island != null) {
             if (IridiumSkyblock.getUpgrades().sizeUpgrade.enabled)
                 setItem(IridiumSkyblock.getUpgrades().sizeUpgrade.slot, Utils.makeItemHidden(IridiumSkyblock.getInventories().size, getIsland()));
+            setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -44,6 +46,9 @@ public class UpgradeGUI extends GUI implements Listener {
                 } else {
                     e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().maxLevelReached.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 }
+            } else if (e.getSlot() == 27) {
+                e.getWhoClicked().closeInventory();
+                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
             }
         }
     }

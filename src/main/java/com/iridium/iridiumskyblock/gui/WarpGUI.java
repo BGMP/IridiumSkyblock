@@ -4,6 +4,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,6 +34,7 @@ public class WarpGUI extends GUI implements Listener {
                 setItem(i, Utils.makeItem(IridiumSkyblock.getInventories().islandWarp, Collections.singletonList(new Utils.Placeholder("warp", warp.getName()))));
                 i++;
             }
+            setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -60,6 +62,9 @@ public class WarpGUI extends GUI implements Listener {
                     }
                 }
                 p.closeInventory();
+            } else if (e.getSlot() == 27) {
+                e.getWhoClicked().closeInventory();
+                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
             }
         }
     }

@@ -3,6 +3,7 @@ package com.iridium.iridiumskyblock.gui;
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,6 +23,7 @@ public class BoosterGUI extends GUI implements Listener {
             if (IridiumSkyblock.getBoosters().spawnerBooster.enabled)
                 setItem(IridiumSkyblock.getBoosters().spawnerBooster.slot, Utils.makeItem(IridiumSkyblock.getInventories().spawner, getIsland()));
         }
+        setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
     }
 
     @EventHandler
@@ -42,6 +44,9 @@ public class BoosterGUI extends GUI implements Listener {
                 } else {
                     e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().spawnerBoosterActive.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 }
+            } else if (e.getSlot() == 27) {
+                p.closeInventory();
+                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
             }
         }
     }

@@ -5,7 +5,6 @@ import com.iridium.iridiumskyblock.MultiversionMaterials;
 import java.util.*;
 
 public class Inventories {
-
     public String upgradeGUITitle = "&bUpgrade";
     public String boosterGUITitle = "&bBooster";
     public String confirmationGUITitle = "&b7Are you sure?";
@@ -24,22 +23,24 @@ public class Inventories {
     public String flagsGUITitle = "&bIsland Flags";
     public String globalsGUITitle = "&bGlobal Flags";
 
-    public int upgradeGUISize = 27;
-    public int boosterGUISize = 27;
-    public int missionsGUISize = 27;
-    public int membersGUISize = 27;
-    public int coopGUISize = 27;
+    public int upgradeGUISize = 36;
+    public int boosterGUISize = 36;
+    public int missionsGUISize = 36;
+    public int membersGUISize = 36;
+    public int coopGUISize = 36;
     public int islandMenuGUISize = 45;
-    public int warpGUISize = 27;
-    public int topGUISize = 27;
-    public int borderColorGUISize = 27;
-    public int schematicselectGUISize = 27;
-    public int bankGUISize = 27;
+    public int warpGUISize = 36;
+    public int topGUISize = 36;
+    public int borderColorGUISize = 36;
+    public int schematicselectGUISize = 36;
+    public int bankGUISize = 36;
     public int visitGUISize = 54;
     public int shopGUISize = 54;
-    public int permissionsGUISize = 27;
-    public int flagsGUISize = 27;
-    public int globalsGUISize = 27;
+    public int permissionsGUISize = 36;
+    public int flagsGUISize = 36;
+    public int globalsGUISize = 54;
+
+    public Item goBackArrow = new Item(MultiversionMaterials.ARROW, 1, "&aGo Back", Collections.emptyList());
 
     //Boosters
     public Item spawner = new Item(MultiversionMaterials.SPAWNER, 1, "&b&lIncreased Mobs", Arrays.asList("&7Are your spawners too slow? Buy this", "&7booster and increase spawner rates x2.", "", "&b&lInformation:", "&b&l * &7Time Remaining: &b{spawnerbooster_minutes} minutes and {spawnerbooster_seconds}seconds", "&b&l * &7Booster Cost: &b{spawnerbooster_crystalcost} Crystals and ${spawnerbooster_vaultcost}", "", "&b&l[!] &bRight Click to Purchase this Booster."));
@@ -99,17 +100,16 @@ public class Inventories {
     );
 
     public HashMap<Item, String> menu = new HashMap<Item, String>() {{
-        put(new Item(MultiversionMaterials.WHITE_BED, 13, 1, "&b&lIsland Home", Collections.singletonList("&7Teleport to your island home")), "is home");
-        put(new Item(MultiversionMaterials.PLAYER_HEAD, 14, 1, "&b&lIsland Members", "Peaches_MLG", Collections.singletonList("&7View your island Members.")), "is members");
-        put(new Item(MultiversionMaterials.GRASS, 36, 1, "&b&lIsland Regen", Collections.singletonList("&7Regenerate your island.")), "is regen");
-        put(new Item(MultiversionMaterials.PLAYER_HEAD, 21, 1, "&b&lIsland Upgrades", "ABigDwarf", Collections.singletonList("&7Upgrade your island.")), "is upgrade");
-        put(new Item(MultiversionMaterials.EXPERIENCE_BOTTLE, 23, 1, "&b&lIsland Boosters", Collections.singletonList("&7Boost your island.")), "is booster");
-        put(new Item(MultiversionMaterials.BOOK, 31, 1, "&b&lIsland Flags & Permissions", Collections.singletonList("&7Change island global flags & permissions.")), "is flags");
         put(new Item(MultiversionMaterials.DIAMOND, 0, 1, "&b&lIsland Top", Collections.singletonList("&7View top islands.")), "is top");
-        put(new Item(MultiversionMaterials.END_PORTAL_FRAME, 12, 1, "&b&lIsland Warps", Collections.singletonList("&7View your island warps.")), "is warps");
+        put(new Item(MultiversionMaterials.WHITE_BED, 4, 1, "&b&lIsland Home", Collections.singletonList("&7Teleport to your island home")), "is home");
+        put(new Item(MultiversionMaterials.END_PORTAL_FRAME, 11, 1, "&b&lIsland Warps", Collections.singletonList("&7View your island warps.")), "is warps");
+        put(new Item(MultiversionMaterials.PLAYER_HEAD, 15, 1, "&b&lIsland Members", "Peaches_MLG", Collections.singletonList("&7View your island Members.")), "is members");
+        put(new Item(MultiversionMaterials.PLAYER_HEAD, 19, 1, "&b&lIsland Upgrades", "ABigDwarf", Collections.singletonList("&7Upgrade your island.")), "is upgrade");
         put(new Item(MultiversionMaterials.BEACON, 22, 1, "&b&lIsland Border", Collections.singletonList("&7Change your island border.")), "is border");
-        put(new Item(MultiversionMaterials.NAME_TAG, 32, 1, "&b&lIsland Coop", Collections.singletonList("&7View your Co-op Islands.")), "is coop");
-        put(new Item(MultiversionMaterials.GOLD_INGOT, 30, 1, "&b&lIsland Bank", Collections.singletonList("&7View your Island Bank.")), "is bank");
+        put(new Item(MultiversionMaterials.EXPERIENCE_BOTTLE, 25, 1, "&b&lIsland Boosters", Collections.singletonList("&7Boost your island.")), "is booster");
+        put(new Item(MultiversionMaterials.GOLD_INGOT, 29, 1, "&b&lIsland Bank", Collections.singletonList("&7View your Island Bank.")), "is bank");
+        put(new Item(MultiversionMaterials.NAME_TAG, 33, 1, "&b&lIsland Coop", Collections.singletonList("&7View your Co-op Islands.")), "is coop");
+        put(new Item(MultiversionMaterials.BOOK, 40, 1, "&b&lIsland Flags & Permissions", Collections.singletonList("&7Change island global flags & permissions.")), "is flags");
         put(new Item(MultiversionMaterials.BARRIER, 44, 1, "&b&lIsland Delete", Collections.singletonList("&7Delete your island.")), "is delete");
     }};
 

@@ -2,6 +2,7 @@ package com.iridium.iridiumskyblock.gui;
 
 import com.iridium.iridiumskyblock.*;
 import com.iridium.iridiumskyblock.support.Vault;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,6 +25,7 @@ public class BankGUI extends GUI implements Listener {
             setItem(IridiumSkyblock.getInventories().withdraw.slot == null ? 13 : IridiumSkyblock.getInventories().withdraw.slot, Utils.makeItemHidden(IridiumSkyblock.getInventories().withdraw, getIsland()));
             setItem(IridiumSkyblock.getInventories().money.slot == null ? 15 : IridiumSkyblock.getInventories().money.slot, Utils.makeItemHidden(IridiumSkyblock.getInventories().money, getIsland()));
         }
+        setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
     }
 
     @EventHandler
@@ -40,6 +42,9 @@ public class BankGUI extends GUI implements Listener {
             } else if (e.getSlot() == (IridiumSkyblock.getInventories().withdraw.slot == null ? 13 : IridiumSkyblock.getInventories().withdraw.slot)) {
                 p.sendMessage(Utils.color(IridiumSkyblock.getMessages().withdrawAdvice.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 p.closeInventory();
+            } else if (e.getSlot() == 27) {
+                p.closeInventory();
+                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
             }
         }
     }

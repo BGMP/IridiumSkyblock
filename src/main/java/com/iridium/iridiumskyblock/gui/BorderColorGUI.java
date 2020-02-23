@@ -4,6 +4,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.NMSUtils;
 import com.iridium.iridiumskyblock.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -29,12 +30,11 @@ public class BorderColorGUI extends GUI implements Listener {
         this.blue = Utils.makeItem(IridiumSkyblock.getInventories().blue);
         this.off = Utils.makeItem(IridiumSkyblock.getInventories().off);
 
-        setItem(10, this.red);
-        setItem(12, this.blue);
-        setItem(14, this.green);
-        setItem(16, this.off);
+        setItem(11, this.red);
+        setItem(13, this.blue);
+        setItem(15, this.green);
+        setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
     }
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         if (e.getInventory().equals(getInventory())) {
@@ -50,6 +50,10 @@ public class BorderColorGUI extends GUI implements Listener {
                 if (e.getCurrentItem().equals(off))
                     IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(NMSUtils.Color.Off);
                 IridiumSkyblock.getIslandManager().getIslandViaId(islandID).sendBorder();
+                if (e.getSlot() == 27) {
+                    e.getWhoClicked().closeInventory();
+                    Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
+                }
             }
         }
     }

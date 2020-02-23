@@ -25,6 +25,7 @@ public class FlagsGUI extends GUI implements Listener {
             for (Inventories.Item item : IridiumSkyblock.getInventories().flags.keySet()){
                 setItem(item.slot, Utils.makeItemHidden(item, getIsland()));
             }
+            setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -39,10 +40,13 @@ public class FlagsGUI extends GUI implements Listener {
             User u = User.getUser(p);
 
             for (Inventories.Item item : IridiumSkyblock.getInventories().flags.keySet()){
-                if (item.slot == e.getSlot()){
+                if (item.slot == e.getSlot()) {
                     p.closeInventory();
                     Bukkit.getServer().dispatchCommand(e.getWhoClicked(), IridiumSkyblock.getInventories().flags.get(item));
                     return;
+                } else if (e.getSlot() == 27) {
+                    e.getWhoClicked().closeInventory();
+                    Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
                 }
             }
         }

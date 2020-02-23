@@ -2,6 +2,7 @@ package com.iridium.iridiumskyblock.gui;
 
 import com.iridium.iridiumskyblock.*;
 import com.iridium.iridiumskyblock.configs.Inventories;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -64,6 +65,7 @@ public class PermissionsGUI extends GUI implements Listener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            setItem(45, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -79,6 +81,10 @@ public class PermissionsGUI extends GUI implements Listener {
             for (Role role : Role.values()) {
                 if (e.getSlot() == i) {
                     e.getWhoClicked().openInventory(permissions.get(role).getInventory());
+                } else if (e.getSlot() == 45) {
+                    e.getWhoClicked().closeInventory();
+                    Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is flags");
+                    return;
                 }
                 i++;
             }
@@ -96,6 +102,10 @@ public class PermissionsGUI extends GUI implements Listener {
                                     field.setAccessible(true);
                                     field.setBoolean(getIsland().getPermissions(role), !(Boolean) object);
                                     addContent();
+                                } else if (e.getSlot() == 45) {
+                                    e.getWhoClicked().closeInventory();
+                                    Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is flags");
+                                    return;
                                 }
                                 i++;
                             }

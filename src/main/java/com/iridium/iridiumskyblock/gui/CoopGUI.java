@@ -4,6 +4,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,6 +46,7 @@ public class CoopGUI extends GUI implements Listener {
                 }
             }
         }
+        setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
     }
 
     @Override
@@ -69,6 +71,9 @@ public class CoopGUI extends GUI implements Listener {
                         e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().playersIslandIsPrivate.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                     }
                 }
+            } else if (e.getSlot() == 27) {
+                e.getWhoClicked().closeInventory();
+                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
             }
         }
     }

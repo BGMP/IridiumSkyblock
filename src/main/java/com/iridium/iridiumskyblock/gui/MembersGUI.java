@@ -38,6 +38,7 @@ public class MembersGUI extends GUI implements Listener {
                 setItem(i, head);
                 i++;
             }
+            setItem(27, Utils.makeItem(IridiumSkyblock.getInventories().goBackArrow, getIsland()));
         }
     }
 
@@ -48,6 +49,11 @@ public class MembersGUI extends GUI implements Listener {
             e.setCancelled(true);
             if (e.getClickedInventory() == null || !e.getClickedInventory().equals(getInventory())) return;
             if (User.getUser((OfflinePlayer) e.getWhoClicked()).bypassing || getIsland().equals(User.getUser((OfflinePlayer) e.getWhoClicked()).getIsland())) {
+                if (e.getSlot() == 27) {
+                    e.getWhoClicked().closeInventory();
+                    Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
+                    return;
+                }
                 if (users.containsKey(e.getSlot())) {
                     User u = users.get(e.getSlot());
                     User user = User.getUser((Player) e.getWhoClicked());
@@ -84,6 +90,11 @@ public class MembersGUI extends GUI implements Listener {
                             e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().noPermission.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                         }
                     } else {
+                        if (e.getSlot() == 27) {
+                            e.getWhoClicked().closeInventory();
+                            Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
+                            return;
+                        }
                         if (user.getIsland().getPermissions(user.role).promote) {
                             if (!(u.getRole().equals(Role.Owner))) {
                                 if (u.getRole().getRank() < user.role.getRank()) {
