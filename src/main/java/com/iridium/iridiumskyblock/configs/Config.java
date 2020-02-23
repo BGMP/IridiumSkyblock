@@ -31,7 +31,6 @@ public class Config {
     public String chatNAMEPlaceholder = "[ISLAND_NAME]";
     public boolean createCooldown = true;
     public boolean doIslandBackup = true;
-    public boolean islandShop = true;
     public boolean automaticUpdate = true;
     public boolean defaultIslandPublic = true;
     public boolean netherIslands = true;
@@ -45,7 +44,7 @@ public class Config {
     public boolean allowWaterInNether = true;
     public int deleteBackupsAfterDays = 7;
     public int regenCooldown = 3600;
-    public int distance = 500;
+    public int distance = 1500;
     public int backupIntervalMinutes = 60;
     public int blocksPerTick = 25;
     public int islandsUpdateInterval = 5;
