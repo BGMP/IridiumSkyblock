@@ -39,7 +39,6 @@ public class Commands {
     public SetNameCommand setNameCommand = new SetNameCommand();
     public BankCommand bankCommand = new BankCommand();
     public ChatCommand chatCommand = new ChatCommand();
-    public ShopCommand shopCommand = new ShopCommand();
     public HelpCommand helpCommand = new HelpCommand();
     public DepositCommand depositCommand = new DepositCommand();
     public WithdrawCommand withdrawCommand = new WithdrawCommand();

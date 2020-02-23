@@ -3,7 +3,6 @@ package com.iridium.iridiumskyblock;
 import com.iridium.iridiumskyblock.commands.CommandManager;
 import com.iridium.iridiumskyblock.configs.*;
 import com.iridium.iridiumskyblock.gui.LanguagesGUI;
-import com.iridium.iridiumskyblock.gui.ShopGUI;
 import com.iridium.iridiumskyblock.gui.TopGUI;
 import com.iridium.iridiumskyblock.gui.VisitGUI;
 import com.iridium.iridiumskyblock.listeners.*;
@@ -41,7 +40,6 @@ public class IridiumSkyblock extends JavaPlugin {
     public static BlockValues blockValues;
     public static Shop shop;
     public static TopGUI topGUI;
-    public static ShopGUI shopGUI;
     public static HashMap<Integer, VisitGUI> visitGUI;
     public static HashMap<Integer, List<String>> oreUpgradeCache = new HashMap<>();
     public static HashMap<Integer, List<String>> netherOreUpgradeCache = new HashMap<>();
@@ -111,10 +109,6 @@ public class IridiumSkyblock extends JavaPlugin {
         return inventories;
     }
 
-    public static ShopGUI getShopGUI() {
-        return shopGUI;
-    }
-
     public static Shop getShop() {
         return shop;
     }
@@ -162,7 +156,6 @@ public class IridiumSkyblock extends JavaPlugin {
                 Bukkit.getScheduler().scheduleSyncDelayedTask(IridiumSkyblock.getInstance(), IridiumSkyblock.getInstance()::islandValueManager);
 
                 topGUI = new TopGUI();
-                shopGUI = new ShopGUI();
                 visitGUI = new HashMap<>();
 
                 registerListeners(new onBlockPiston(),
@@ -536,16 +529,6 @@ public class IridiumSkyblock extends JavaPlugin {
         }
 
         if (shop.shop == null) shop = new Shop();
-
-        if (getCommandManager() != null) {
-            if (getCommandManager().commands.contains(IridiumSkyblock.getCommands().shopCommand)) {
-                if (!configuration.islandShop)
-                    getCommandManager().unRegisterCommand(IridiumSkyblock.getCommands().shopCommand);
-            } else {
-                if (configuration.islandShop)
-                    getCommandManager().registerCommand(IridiumSkyblock.getCommands().shopCommand);
-            }
-        }
 
         getBlockValues().blockvalue.remove(MultiversionMaterials.AIR);
 
