@@ -63,6 +63,11 @@ public class onPlayerInteractAtEntity implements Listener {
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseLeash.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 event.setCancelled(true);
             }
+        } else if (entityType == EntityType.ARMOR_STAND) {
+            if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).useArmorStand && !user.bypassing) {
+                player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseArmorStand.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                event.setCancelled(true);
+            }
         }
     }
 }

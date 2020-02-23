@@ -40,6 +40,7 @@ public class Messages {
     public String cantUseLavaBucket = "%prefix% &7You may not use lava buckets in this Island.";
     public String cantUseWaterBucket = "%prefix% &7You may not use water buckets in this Island.";
     public String cantUseFlintAndSteel ="%prefix% &7You may not use flint and steel in this Island";
+    public String cantUseArmorStand = "%prefix% You may not use Armor Stands in this Island";
     public String cantUseShears = "%prefix% &7You may not use shears in this Island.";
     public String cantUseSpawnEggs = "%prefix% &7You may not use spawn eggs in this Island.";
     public String cantPVP = "%prefix% &7You may not PVP in this Island.";

@@ -259,9 +259,16 @@ public class Permissions {
     @Permission(
             id = "redstone",
             name = "Use Redstone",
-            icon = MultiversionMaterials.ANVIL
+            icon = MultiversionMaterials.REDSTONE
     )
     public boolean redstone;
+
+    @Permission(
+            id = "armor_stand",
+            name = "Use Armor Stand",
+            icon = MultiversionMaterials.ARMOR_STAND
+    )
+    public boolean useArmorStand;
 
     public Permissions(boolean breakBlocks,
                        boolean placeBlocks,
@@ -299,7 +306,8 @@ public class Permissions {
                        boolean useWaterBucket,
                        boolean throwChickenEgg,
                        boolean useAnvil,
-                       boolean redstone
+                       boolean redstone,
+                       boolean useArmorStand
     ) {
         this.breakBlocks = breakBlocks;
         this.placeBlocks = placeBlocks;
@@ -338,6 +346,7 @@ public class Permissions {
         this.throwChickenEgg = throwChickenEgg;
         this.useAnvil = useAnvil;
         this.redstone = redstone;
+        this.useArmorStand = useArmorStand;
     }
 
     public Permissions() {
@@ -378,5 +387,6 @@ public class Permissions {
         throwChickenEgg = true;
         useAnvil = true;
         redstone = true;
+        useArmorStand = true;
     }
 }

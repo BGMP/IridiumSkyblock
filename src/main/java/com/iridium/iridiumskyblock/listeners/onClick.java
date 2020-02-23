@@ -89,6 +89,16 @@ public class onClick implements Listener {
                                 e.setCancelled(true);
                             }
                         }
+                    } else if (e.getPlayer().getItemInHand().getType().equals(Material.ARMOR_STAND)) {
+                        Player p = e.getPlayer();
+                        User user = User.getUser(p);
+
+                        if (user.getIsland() != null) {
+                            if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).useArmorStand && !user.bypassing) {
+                                p.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseFlintAndSteel.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                                e.setCancelled(true);
+                            }
+                        }
                     }
                 }
 
