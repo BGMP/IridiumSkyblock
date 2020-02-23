@@ -293,14 +293,11 @@ public class Utils {
 
                 //Bank
                 new Placeholder("experience", island.exp + ""),
-                new Placeholder("crystals", island.getCrystals() + ""),
                 new Placeholder("money", island.money + "")));
         //Status amount crystals vault
         for (String mission : IridiumSkyblock.getMissions().mission.keySet()) {
-            int amount = island.getMission(mission);
             if (!island.getMissionLevels().containsKey(mission)) island.getMissionLevels().put(mission, 1);
             Missions.Mission m = IridiumSkyblock.getMissions().mission.get(mission).get(island.getMissionLevels().get(mission));
-            placeholders.add(new Placeholder(mission + "status", amount == Integer.MIN_VALUE ? IridiumSkyblock.getMessages().completed : amount + "/" + m.amount));
             placeholders.add(new Placeholder(mission + "amount", m.amount + ""));
             placeholders.add(new Placeholder(mission + "crystals", m.crystalReward + ""));
             placeholders.add(new Placeholder(mission + "vault", m.vaultReward + ""));
@@ -332,10 +329,9 @@ public class Utils {
         return color(line);
     }
 
-    public static void pay(Player p, int vault, int crystals) {
+    public static void pay(Player p, int vault) {
         User u = User.getUser(p);
         if (u.getIsland() != null) {
-            u.getIsland().setCrystals(u.getIsland().getCrystals() + crystals);
             if (Vault.econ == null) {
                 u.getIsland().money += vault;
             } else {

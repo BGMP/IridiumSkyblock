@@ -21,7 +21,6 @@ public class onBlockPlace implements Listener {
                         Missions.Mission m = IridiumSkyblock.getMissions().mission.get(mission).get(island.getMissionLevels().get(mission));
                         if (m.type == MissionType.BLOCK_PLACE) {
                             if (m.conditions.isEmpty() || m.conditions.contains(MultiversionMaterials.fromMaterial(e.getBlock().getType()).toString()) || (e.getBlock().getState().getData() instanceof Crops && m.conditions.contains(((Crops) e.getBlock().getState().getData()).getState().toString()))) {
-                                island.addMission(mission, 1);
                             }
                         }
                     }

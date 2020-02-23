@@ -1,6 +1,8 @@
 package com.iridium.iridiumskyblock.commands;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
+import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.Bukkit;
@@ -26,10 +28,16 @@ public class BanCommand extends Command {
         }
         Player p = (Player) sender;
         User user = User.getUser(p);
+
         if (user.getIsland() != null) {
             OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
             if (player != null) {
-                if (!user.getIsland().equals(User.getUser(player).getIsland())) {
+                Island island = user.getIsland();
+                if (!island.equals(User.getUser(player).getIsland())) {
+                    if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).ban && !user.bypassing) {
+                        p.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantBan.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                        return;
+                    }
                     user.getIsland().addBan(User.getUser(player));
                     sender.sendMessage(Utils.color(IridiumSkyblock.getMessages().playerBanned.replace("%player%", player.getName()).replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                     if (player.getPlayer() != null) {

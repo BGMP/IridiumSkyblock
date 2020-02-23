@@ -25,7 +25,7 @@ public class RegenCommand extends Command {
         User user = User.getUser(p);
         if (user.getIsland() != null) {
             if (user.role.equals(Role.Owner)) {
-                if (user.bypassing || user.getIsland().getPermissions(user.role).regen) {
+                if (user.bypassing) {
                     long time = user.getIsland().canGenerate() / 1000;
                     if (time == 0 || user.bypassing) {
                         if (IridiumSkyblock.getInstance().schems.size() == 1) {
@@ -46,7 +46,6 @@ public class RegenCommand extends Command {
                                     user.getIsland().setExpBooster(0);
                                     user.getIsland().setFarmingBooster(0);
                                     user.getIsland().setSpawnerBooster(0);
-                                    user.getIsland().setCrystals(0);
                                     user.getIsland().exp = 0;
                                     user.getIsland().money = 0;
                                 }

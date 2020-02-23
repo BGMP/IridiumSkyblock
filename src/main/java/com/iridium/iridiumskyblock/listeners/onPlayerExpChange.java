@@ -21,7 +21,6 @@ public class onPlayerExpChange implements Listener {
                 for (String mission : IridiumSkyblock.getMissions().mission.keySet()) {
                     if (!island.getMissionLevels().containsKey(mission)) island.getMissionLevels().put(mission, 1);
                     if (IridiumSkyblock.getMissions().mission.get(mission).get(island.getMissionLevels().get(mission)).type == MissionType.EXPERIENCE) {
-                        island.addMission(mission, e.getAmount());
                     }
                 }
             }

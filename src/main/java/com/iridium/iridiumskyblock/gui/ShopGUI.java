@@ -125,7 +125,7 @@ public class ShopGUI extends GUI implements Listener {
                                 }
                                 index++;
                             }
-                            Utils.pay((Player) e.getWhoClicked(), item.sellVault, item.sellCrystals);
+                            Utils.pay((Player) e.getWhoClicked(), item.sellVault);
                         } else {
                             e.getWhoClicked().sendMessage(Utils.color(IridiumSkyblock.getMessages().cantSell.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                         }

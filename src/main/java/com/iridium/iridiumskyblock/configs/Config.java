@@ -51,7 +51,6 @@ public class Config {
     public int islandsUpdateInterval = 5;
     public double valuePerLevel = 100.00;
     public double dailyMoneyInterest = 0.5;
-    public double dailyCrystalsInterest = 5;
     public double dailyExpInterest = 0.01;
     public Biome defaultBiome = Biome.PLAINS;
     public Biome netherBiome;
@@ -59,14 +58,61 @@ public class Config {
     public HashMap<Role, Permissions> defaultPermissions = new HashMap<Role, Permissions>() {{
         for (Role role : Role.values()) {
             if (role == Role.Visitor) {
-                put(role, new Permissions(false, false, false, false, false, false, false, false, false, true, true, false, false, false, false, false));
+                put(role, new Permissions
+                        (
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
+                        )
+                );
             } else {
                 put(role, new Permissions());
             }
         }
     }};
 
-    public GlobalPermissions defaultGlobals = new GlobalPermissions(false, false, true, true);
+    public GlobalPermissions defaultGlobals = new GlobalPermissions
+            (
+            false,
+            true,
+            true,
+            true,
+            true
+            );
 
     public HashMap<Integer, Integer> islandTopSlots = new HashMap<Integer, Integer>() {{
         put(1, 4);

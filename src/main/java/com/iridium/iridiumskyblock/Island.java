@@ -80,8 +80,6 @@ public class Island {
 
     private int boosterid;
 
-    private int crystals;
-
     private int sizeLevel;
     private int memberLevel;
     private int warpLevel;
@@ -151,7 +149,6 @@ public class Island {
         farmingBooster = 0;
         expBooster = 0;
         flightBooster = 0;
-        crystals = 0;
         sizeLevel = 1;
         memberLevel = 1;
         warpLevel = 1;
@@ -183,38 +180,6 @@ public class Island {
             }
         }
         missions.clear();
-    }
-
-    public int getMission(String mission) {
-        if (missions == null) missions = new HashMap<>();
-        if (!missions.containsKey(mission)) missions.put(mission, 0);
-        return missions.get(mission);
-    }
-
-    public void addMission(String mission, int amount) {
-        if (missions == null) missions = new HashMap<>();
-        if (!missions.containsKey(mission)) missions.put(mission, 0);
-        if (missions.get(mission) == Integer.MIN_VALUE) return;
-        missions.put(mission, missions.get(mission) + amount);
-        if (IridiumSkyblock.getMissions().mission.containsKey(mission)) {
-            if (!getMissionLevels().containsKey(mission)) getMissionLevels().put(mission, 1);
-            if (IridiumSkyblock.getMissions().mission.get(mission).get(getMissionLevels().get(mission)).amount <= missions.get(mission)) {
-                completeMission(mission);
-            }
-        }
-    }
-
-    public void setMission(String mission, int amount) {
-        if (missions == null) missions = new HashMap<>();
-        if (!missions.containsKey(mission)) missions.put(mission, 0);
-        if (missions.get(mission) == Integer.MIN_VALUE) return;
-        missions.put(mission, amount);
-        if (IridiumSkyblock.getMissions().mission.containsKey(mission)) {
-            if (!getMissionLevels().containsKey(mission)) getMissionLevels().put(mission, 1);
-            if (IridiumSkyblock.getMissions().mission.get(mission).get(getMissionLevels().get(mission)).amount <= missions.get(mission)) {
-                completeMission(mission);
-            }
-        }
     }
 
     public Permissions getPermissions(Role role) {
@@ -258,29 +223,6 @@ public class Island {
         NMSUtils.sendWorldBorder(p, borderColor, Integer.MAX_VALUE, getCenter().clone());
     }
 
-    public void completeMission(String mission) {
-        if (!getMissionLevels().containsKey(mission)) getMissionLevels().put(mission, 1);
-        missions.put(mission, (IridiumSkyblock.getConfiguration().missionRestart == MissionRestart.Instantly ? 0 : Integer.MIN_VALUE));
-        int crystalReward = IridiumSkyblock.getMissions().mission.get(mission).get(getMissionLevels().get(mission)).crystalReward;
-        int vaultReward = IridiumSkyblock.getMissions().mission.get(mission).get(getMissionLevels().get(mission)).vaultReward;
-        this.crystals += crystalReward;
-        this.money += vaultReward;
-        for (String member : members) {
-            Player p = Bukkit.getPlayer(User.getUser(member).name);
-            if (p != null) {
-                NMSUtils.sendTitle(p, IridiumSkyblock.getMessages().missionComplete.replace("%mission%", mission).replace("%level%", getMissionLevels().get(mission) + ""), 20, 40, 20);
-                NMSUtils.sendSubTitle(p, IridiumSkyblock.getMessages().rewards.replace("%crystalsReward%", crystalReward + "").replace("%vaultReward%", vaultReward + ""), 20, 40, 20);
-            }
-        }
-
-        if (IridiumSkyblock.getConfiguration().missionRestart == MissionRestart.Instantly) {
-            if (IridiumSkyblock.getMissions().mission.get(mission).containsKey(getMissionLevels().get(mission) + 1)) {
-                //We have another mission, put us on the next level
-                getMissionLevels().put(mission, getMissionLevels().get(mission) + 1);
-            }
-        }
-    }
-
     public void calculateIslandValue() {
         if (blocks == null) blocks = new ArrayList<>();
         if (blocks.hashCode() == lastblocks) return;
@@ -314,15 +256,12 @@ public class Island {
         }
         this.value = value;
         if (startvalue == -1) startvalue = value;
-        for (String mission : IridiumSkyblock.getMissions().mission.keySet()) {
-            if (!getMissionLevels().containsKey(mission)) getMissionLevels().put(mission, 1);
-            if (IridiumSkyblock.getMissions().mission.get(mission).get(getMissionLevels().get(mission)).type == MissionType.VALUE_INCREASE) {
-                setMission(mission, value - startvalue);
-            }
-        }
         lastblocks = blocks.hashCode();
     }
 
+    /**
+     * TODO: Fix Island value
+     **/
     public void initBlocks() {
         this.a = Bukkit.getScheduler().scheduleSyncRepeatingTask(IridiumSkyblock.getInstance(), new Runnable() {
             int world = 0;
@@ -1080,14 +1019,6 @@ public class Island {
 
     public void setFlightBooster(int flightBooster) {
         this.flightBooster = flightBooster;
-    }
-
-    public int getCrystals() {
-        return crystals;
-    }
-
-    public void setCrystals(int crystals) {
-        this.crystals = crystals;
     }
 
     public HashSet<String> getMembers() {

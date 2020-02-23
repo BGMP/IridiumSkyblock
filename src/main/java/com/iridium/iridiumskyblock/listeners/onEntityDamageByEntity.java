@@ -4,6 +4,7 @@ import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
 import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
+import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,12 @@ public class onEntityDamageByEntity implements Listener {
         try {
             Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getEntity().getLocation());
             if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) { // Deals with two players pvping in IridiumSkyblock world
+                Player player = (Player) e.getDamager();
+                User user = User.getUser(player);
+                if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).pvp && !user.bypassing) {
+                    player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantPVP.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                    return;
+                }
                 if (e.getEntity().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getWorld()) || e.getEntity().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getNetherWorld())) {
                     e.setCancelled(true);
                 }

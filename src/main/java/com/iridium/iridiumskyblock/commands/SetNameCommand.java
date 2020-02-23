@@ -27,7 +27,7 @@ public class SetNameCommand extends Command {
         }
         if (user.getIsland() != null) {
             if (user.role.equals(Role.Owner)) {
-                if (user.bypassing || user.getIsland().getPermissions(user.role).regen) {
+                if (user.bypassing) {
                     user.getIsland().setName(args[1]);
                     for (String member : user.getIsland().getMembers()) {
                         Player player = Bukkit.getPlayer(User.getUser(member).name);

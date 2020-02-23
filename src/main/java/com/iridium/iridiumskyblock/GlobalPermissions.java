@@ -1,6 +1,7 @@
 package com.iridium.iridiumskyblock;
 
 import com.iridium.iridiumskyblock.gui.GlobalPermission;
+import com.iridium.iridiumskyblock.gui.Permission;
 
 public class GlobalPermissions {
 
@@ -32,11 +33,26 @@ public class GlobalPermissions {
     )
     public boolean mobSpawning;
 
-    public GlobalPermissions(boolean explosionDamage, boolean fireSpread, boolean animalSpawning, boolean mobSpawning) {
+    @GlobalPermission(
+            id = "breed_animals",
+            name = "Breed Animals",
+            icon = MultiversionMaterials.WHEAT
+    )
+    public boolean breedAnimals;
+
+
+    public GlobalPermissions(
+            boolean explosionDamage,
+            boolean fireSpread,
+            boolean animalSpawning,
+            boolean mobSpawning,
+            boolean breedAnimals
+    ) {
         this.explosionDamage = explosionDamage;
         this.fireSpread = fireSpread;
         this.animalSpawning = animalSpawning;
         this.mobSpawning = mobSpawning;
+        this.breedAnimals = breedAnimals;
     }
 
     public GlobalPermissions() {
@@ -44,5 +60,6 @@ public class GlobalPermissions {
         fireSpread = false;
         animalSpawning = true;
         mobSpawning = true;
+        breedAnimals = true;
     }
 }

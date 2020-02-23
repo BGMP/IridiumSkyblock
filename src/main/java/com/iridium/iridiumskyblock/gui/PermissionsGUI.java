@@ -36,7 +36,7 @@ public class PermissionsGUI extends GUI implements Listener {
     }
 
     public PermissionsGUI(Island island, Role role) {
-        super(island, 27, IridiumSkyblock.getInventories().permissionsGUITitle);
+        super(island, 54, IridiumSkyblock.getInventories().permissionsGUITitle);
         this.role = role;
     }
 

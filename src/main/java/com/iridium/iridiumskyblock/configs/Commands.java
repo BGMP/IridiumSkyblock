@@ -12,8 +12,6 @@ public class Commands {
     public JoinCommand joinCommand = new JoinCommand();
     public UpgradeCommand upgradeCommand = new UpgradeCommand();
     public BoosterCommand boosterCommand = new BoosterCommand();
-    public GiveCrystalsCommand giveCrystalsCommand = new GiveCrystalsCommand();
-    public RemoveCrystalsCommand removeCrystalsCommand = new RemoveCrystalsCommand();
     public MembersCommand membersCommand = new MembersCommand();
     public FlyCommand flyCommand = new FlyCommand();
     public AboutCommand aboutCommand = new AboutCommand();

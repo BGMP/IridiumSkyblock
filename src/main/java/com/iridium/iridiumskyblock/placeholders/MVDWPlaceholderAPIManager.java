@@ -63,15 +63,6 @@ public class MVDWPlaceholderAPIManager {
             return user.getIsland() != null ? user.getIsland().getName() : "N/A";
         });
 
-        PlaceholderAPI.registerPlaceholder(IridiumSkyblock.getInstance(), "iridiumskyblock_island_crystals", e -> {
-            Player player = e.getPlayer();
-            if (player == null) {
-                return "N/A";
-            }
-            User user = User.getUser(player);
-            return user.getIsland() != null ? NumberFormat.getInstance().format(user.getIsland().getCrystals()) + "" : "N/A";
-        });
-
         PlaceholderAPI.registerPlaceholder(IridiumSkyblock.getInstance(), "iridiumskyblock_island_members", e -> {
             Player player = e.getPlayer();
             if (player == null) {

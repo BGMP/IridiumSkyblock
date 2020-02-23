@@ -1,7 +1,10 @@
 package com.iridium.iridiumskyblock.commands;
 
+import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
+import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -19,7 +22,15 @@ public class PermissionsCommand extends Command {
         Player player = (Player) sender;
         User user = User.getUser(player);
         Island island = user.getIsland();
+
         if (island != null) {
+            if (!island.equals(User.getUser(player).getIsland())) {
+                if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).manageFlags && !user.bypassing) {
+                    player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseFlags.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
+                    return;
+                }
+            }
+
             player.openInventory(island.getPermissionsGUI().getInventory());
         }
     }

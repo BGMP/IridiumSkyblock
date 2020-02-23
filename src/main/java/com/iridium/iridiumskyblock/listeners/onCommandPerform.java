@@ -16,9 +16,6 @@ public class onCommandPerform implements Listener {
     public void onCommandPerform(PlayerCommandPreprocessEvent event) {
         String command = event.getMessage();
         if (command.equalsIgnoreCase("/fly")
-                || command.equalsIgnoreCase("/is fly")
-                || command.equalsIgnoreCase("/island fly")
-                || command.equalsIgnoreCase("is flight")
         ) {
             Player player = event.getPlayer();
             try {

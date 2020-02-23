@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Inventories {
 
-
     public String upgradeGUITitle = "&bUpgrade";
     public String boosterGUITitle = "&bBooster";
     public String confirmationGUITitle = "&b7Are you sure?";
@@ -34,11 +33,11 @@ public class Inventories {
     public int warpGUISize = 27;
     public int topGUISize = 27;
     public int borderColorGUISize = 27;
-    public int permissionsGUISize = 27;
     public int schematicselectGUISize = 27;
     public int bankGUISize = 27;
     public int visitGUISize = 54;
     public int shopGUISize = 54;
+    public int permissionsGUISize = 27;
     public int flagsGUISize = 27;
     public int globalsGUISize = 27;
 
@@ -52,8 +51,6 @@ public class Inventories {
     public Item size = new Item(MultiversionMaterials.GRASS, 1, "&b&lIsland Size", Arrays.asList("&7Need more room to expand? Buy this", "&7upgrade to increase your island size.", "", "&b&lInformation:", "&b&l * &7Current Level: &b{sizelevel}", "&b&l * &7Current Size: &b{sizeblocks}x{sizeblocks} Blocks", "&b&l * &7Upgrade Cost: ${sizecost}", "&b&lLevels:", "&b&l * &7Level 1: &b50x50 Blocks", "&b&l * &7Level 2: &b100x100 Blocks", "&b&l * &7Level 3: &b150x150 Blocks", "&b&l * &7Level 4: &b250x250 Blocks", "&b&l * &7Level 5: &b350x350 Blocks", "&b&l * &7Level 6: &b500x500 Blocks", "", "&b&l[!] &bLeft Click to Purchase this Upgrade"));
 
     //Bank
-    // public Item experience = new Item(MultiversionMaterials.EXPERIENCE_BOTTLE, 11, 1, "&b&lIsland Experience", Arrays.asList("&7{experience} Experience", "&b&l[!] &bLeft click to withdraw", "&b&l[!] &bRight click to deposit"));
-    // public Item crystals = new Item(MultiversionMaterials.NETHER_STAR, 13, 1, "&b&lIsland Crystals", Arrays.asList("&7{crystals} Crystals", "&b&l[!] &bLeft click to withdraw", "&b&l[!] &bRight click to deposit"));
     public Item deposit = new Item(MultiversionMaterials.IRON_INGOT, 11, 1, "&6&lDeposit", Arrays.asList("&7Deposit money into Island"));
     public Item withdraw = new Item(MultiversionMaterials.GOLD_INGOT, 13, 1, "&b&lWithdraw", Arrays.asList("&7Withdraw money from Island"));
     public Item money = new Item(MultiversionMaterials.PAPER, 15, 1, "&b&lBalance", Arrays.asList("&7Current Balance is: &a${money}"));

@@ -23,7 +23,6 @@ public class onEntityDeath implements Listener {
                     Missions.Mission m = IridiumSkyblock.getMissions().mission.get(mission).get(island.getMissionLevels().get(mission));
                     if (m.type == MissionType.ENTITY_KILL) {
                         if (m.conditions.isEmpty() || m.conditions.contains(e.getEntityType().toString())) {
-                            island.addMission(mission, 1);
                         }
                     }
                 }
