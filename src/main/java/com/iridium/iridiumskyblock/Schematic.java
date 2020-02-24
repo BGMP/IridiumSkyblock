@@ -14,8 +14,6 @@ import org.jnbt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,8 +106,7 @@ public class Schematic {
         return height;
     }
 
-    public List<Location> pasteSchematic(Location loc, Island island) {
-        List<Location> locations = new ArrayList<>();
+    public void pasteSchematic(Location loc, Island island) {
         short length = getLength();
         short width = getWidth();
         short height = getHeight();
@@ -126,12 +123,7 @@ public class Schematic {
                     for (int z = 0; z < length; ++z) {
                         int index = y * width * length + z * width + x;
                         Block block = new Location(loc.getWorld(), x + loc.getX(), y + loc.getY(), z + loc.getZ()).getBlock();
-                        if (Material.getMaterial(blocks[index]) != null) {
-                            block.setTypeIdAndData(blocks[index], blockData[index], true);
-                            if (IridiumSkyblock.getBlockValues().blockvalue.containsKey(Material.getMaterial(blocks[index])) || Material.getMaterial(blocks[index]) == Material.MOB_SPAWNER) {
-                                locations.add(block.getLocation());
-                            }
-                        }
+                        IridiumSkyblock.nms.setBlockFast(block, blocks[index], blockData[index]);
                     }
                 }
             }
@@ -160,10 +152,12 @@ public class Schematic {
                             String name = (getChildTag(itemtag, "id", StringTag.class).getValue()).toLowerCase().replace("minecraft:", "");
                             Byte amount = getChildTag(itemtag, "Count", ByteTag.class).getValue();
                             short damage = getChildTag(itemtag, "Damage", ShortTag.class).getValue();
-                            if (MultiversionMaterials.fromString(name.toUpperCase()) != null) {
-                                Material material = MultiversionMaterials.fromString(name.toUpperCase()).parseMaterial();
-                                if (material != null) {
-                                    chest.getBlockInventory().setItem(slot, new ItemStack(material, amount, damage));
+                            XMaterial material = XMaterial.requestOldXMaterial(name.toUpperCase(), (byte) damage);
+                            if (material != null) {
+                                ItemStack itemStack = material.parseItem(true);
+                                if (itemStack != null) {
+                                    itemStack.setAmount(amount);
+                                    chest.getBlockInventory().setItem(slot, itemStack);
                                 }
                             }
                         }
@@ -194,10 +188,8 @@ public class Schematic {
             }
         } else {
             //LoadBlocks
-            if (NMSUtils.getVersionNumber() >= 113) {
+            if (XMaterial.ISFLAT) {
                 try {
-                    Method createBlockData = Bukkit.getServer().getClass().getMethod("createBlockData", String.class);
-                    Method setBlockData = Block.class.getMethod("setBlockData", Class.forName("org.bukkit.block.data.BlockData"), boolean.class);
                     for (int x = 0; x < width; ++x) {
                         for (int y = 0; y < height; ++y) {
                             for (int z = 0; z < length; ++z) {
@@ -206,10 +198,7 @@ public class Schematic {
                                 for (String s : palette.keySet()) {
                                     int i = getChildTag(palette, s, IntTag.class).getValue();
                                     if (blockdata[index] == i) {
-                                        setBlockData.invoke(block, createBlockData.invoke(Bukkit.getServer(), s), true);
-                                        if (Utils.isBlockValuable(block)) {
-                                            locations.add(block.getLocation());
-                                        }
+                                        block.setBlockData(Bukkit.createBlockData(s), false);
                                     }
                                 }
                             }
@@ -242,10 +231,12 @@ public class Schematic {
                                         byte slot = getChildTag(itemtag, "Slot", ByteTag.class).getValue();
                                         String name = (getChildTag(itemtag, "id", StringTag.class).getValue()).toLowerCase().replace("minecraft:", "");
                                         Byte amount = getChildTag(itemtag, "Count", ByteTag.class).getValue();
-                                        if (MultiversionMaterials.fromString(name.toUpperCase()) != null) {
-                                            Material material = MultiversionMaterials.fromString(name.toUpperCase()).parseMaterial();
-                                            if (material != null) {
-                                                chest.getBlockInventory().setItem(slot, new ItemStack(material, amount));
+                                        XMaterial material = XMaterial.requestOldXMaterial(name.toUpperCase(), (byte) -1);
+                                        if (material != null) {
+                                            ItemStack itemStack = material.parseItem(true);
+                                            if (itemStack != null) {
+                                                itemStack.setAmount(amount);
+                                                chest.getBlockInventory().setItem(slot, itemStack);
                                             }
                                         }
                                     }
@@ -280,7 +271,6 @@ public class Schematic {
                 }
             }
         }
-        return locations;
     }
 
     public static void debugSchematic(File file) throws IOException {
@@ -298,7 +288,7 @@ public class Schematic {
     }
 
     public static Schematic loadSchematic(File file) throws IOException {
-        if(cache.containsKey(file.getAbsolutePath()))return cache.get(file.getAbsolutePath());
+        if (cache.containsKey(file.getAbsolutePath())) return cache.get(file.getAbsolutePath());
         FileInputStream stream = new FileInputStream(file);
         NBTInputStream nbtStream = new NBTInputStream(stream);
 

@@ -2,6 +2,7 @@ name: IridiumSkyblock
 version: 2.2.9
 description: Skyblock Redefined
 main: com.iridium.iridiumskyblock.IridiumSkyblock
+api-version: '1.13'
 author: IridiumLLC
 load: STARTUP
 softdepend: [WorldEdit, PlaceholderAPI, MVdWPlaceholderAPI, WildStacker, Vault, Multiverse-Core, Essentials, EssentialsChat, ChatManager, DeluxeChat]

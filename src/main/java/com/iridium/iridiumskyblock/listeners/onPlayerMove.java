@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class onPlayerMove implements Listener {
 
+    // TODO: Un-hardcode spawn command and make it an optional
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         try {

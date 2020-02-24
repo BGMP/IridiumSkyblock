@@ -32,6 +32,7 @@ public class VisitGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         List<Island> top = Utils.getIslands();
         int slot = 0;
         int i = 45 * (page - 1);

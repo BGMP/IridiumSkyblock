@@ -1,8 +1,8 @@
 package com.iridium.iridiumskyblock.gui;
 
+import com.iridium.iridiumskyblock.Color;
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
-import com.iridium.iridiumskyblock.NMSUtils;
 import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -24,6 +24,7 @@ public class BorderColorGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         this.red = Utils.makeItem(IridiumSkyblock.getInventories().red);
         this.green = Utils.makeItem(IridiumSkyblock.getInventories().green);
         this.blue = Utils.makeItem(IridiumSkyblock.getInventories().blue);
@@ -40,11 +41,11 @@ public class BorderColorGUI extends GUI implements Listener {
             if (e.getClickedInventory() == null || !e.getClickedInventory().equals(getInventory())) return;
             if (e.getCurrentItem() != null) {
                 if (e.getCurrentItem().equals(blue))
-                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(NMSUtils.Color.Blue);
+                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(Color.Blue);
                 if (e.getCurrentItem().equals(red))
-                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(NMSUtils.Color.Red);
+                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(Color.Red);
                 if (e.getCurrentItem().equals(green))
-                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(NMSUtils.Color.Green);
+                    IridiumSkyblock.getIslandManager().getIslandViaId(islandID).setBorderColor(Color.Green);
                 IridiumSkyblock.getIslandManager().getIslandViaId(islandID).sendBorder();
                 if (e.getSlot() == 27) {
                     e.getWhoClicked().closeInventory();

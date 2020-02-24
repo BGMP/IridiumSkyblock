@@ -27,6 +27,7 @@ public class MembersGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         users.clear();
         Island island = getIsland();
         if (island != null) {

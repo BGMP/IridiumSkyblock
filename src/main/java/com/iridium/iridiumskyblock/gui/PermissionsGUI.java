@@ -44,6 +44,7 @@ public class PermissionsGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         if (role != null && getIsland() != null) {
             int i = 0;
             try {

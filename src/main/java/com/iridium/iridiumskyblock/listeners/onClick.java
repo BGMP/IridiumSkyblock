@@ -79,7 +79,7 @@ public class onClick implements Listener {
                                 e.setCancelled(true);
                             }
                         }
-                    } else if ((e.getPlayer().getItemInHand().getType().equals(Material.MONSTER_EGGS) || e.getPlayer().getItemInHand().getType().equals(Material.MONSTER_EGG)) && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                    } else if ((e.getPlayer().getItemInHand().getType().equals(Material.LEGACY_MONSTER_EGG) || e.getPlayer().getItemInHand().getType().equals(Material.LEGACY_MONSTER_EGGS)) && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                         Player p = e.getPlayer();
                         User user = User.getUser(p);
 

@@ -7,266 +7,266 @@ public class Permissions {
     @Permission(
             id = "block_break",
             name = "Break Blocks",
-            icon = MultiversionMaterials.IRON_PICKAXE
+            icon = XMaterial.IRON_PICKAXE
     )
     public boolean breakBlocks;
 
     @Permission(
             id = "block_place",
             name = "Place Blocks",
-            icon = MultiversionMaterials.COBBLESTONE
+            icon = XMaterial.COBBLESTONE
     )
     public boolean placeBlocks;
 
     @Permission(
             id = "interact",
             name = "Interact",
-            icon = MultiversionMaterials.OAK_DOOR
+            icon = XMaterial.OAK_DOOR
     )
     public boolean interact;
 
     @Permission(
             id = "kick",
             name = "Kick Members",
-            icon = MultiversionMaterials.PLAYER_HEAD
+            icon = XMaterial.PLAYER_HEAD
     )
     public boolean kickMembers;
 
     @Permission(
             id = "invite_players",
             name = "Invite Players",
-            icon = MultiversionMaterials.WRITABLE_BOOK
+            icon = XMaterial.WRITABLE_BOOK
     )
     public boolean inviteMembers;
 
     @Permission(
             id = "island_private",
             name = "Island Private",
-            icon = MultiversionMaterials.IRON_BARS
+            icon = XMaterial.IRON_BARS
     )
     public boolean islandprivate;
 
     @Permission(
             id = "promote",
             name = "Promote",
-            icon = MultiversionMaterials.LADDER
+            icon = XMaterial.LADDER
     )
     public boolean promote;
 
     @Permission(
             id = "demote",
             name = "Demote",
-            icon = MultiversionMaterials.OAK_TRAPDOOR
+            icon = XMaterial.OAK_TRAPDOOR
     )
     public boolean demote;
 
     @Permission(
             id = "use_nether",
             name = "Use Nether Portal",
-            icon = MultiversionMaterials.OBSIDIAN
+            icon = XMaterial.OBSIDIAN
     )
     public boolean useNetherPortal;
 
     @Permission(
             id = "use_warps",
             name = "Use Warps",
-            icon = MultiversionMaterials.END_PORTAL_FRAME
+            icon = XMaterial.END_PORTAL_FRAME
     )
     public boolean useWarps;
 
     @Permission(
             id = "coop",
             name = "Coop",
-            icon = MultiversionMaterials.NAME_TAG
+            icon = XMaterial.NAME_TAG
     )
     public boolean coop;
 
     @Permission(
             id = "withdraw_bank",
             name = "Withdraw Bank",
-            icon = MultiversionMaterials.GOLD_INGOT
+            icon = XMaterial.GOLD_INGOT
     )
     public boolean withdrawBank;
 
     @Permission(
             id = "kill_mobs",
             name = "Kill Mobs",
-            icon = MultiversionMaterials.IRON_SWORD
+            icon = XMaterial.IRON_SWORD
     )
     public boolean killMobs;
 
     @Permission(
             id = "pickup_items",
             name = "Pickup Items",
-            icon = MultiversionMaterials.HOPPER
+            icon = XMaterial.HOPPER
     )
     public boolean pickupItems;
 
     @Permission(
             id = "fly_command",
             name = "Fly",
-            icon = MultiversionMaterials.FEATHER
+            icon = XMaterial.FEATHER
     )
     public boolean fly;
 
     @Permission(
             id = "ban_members",
             name = "Ban Members",
-            icon = MultiversionMaterials.IRON_AXE
+            icon = XMaterial.IRON_AXE
     )
     public boolean ban;
 
     @Permission(
             id = "manage_flags",
             name = "Manage Flags",
-            icon = MultiversionMaterials.BLACK_BANNER
+            icon = XMaterial.BLACK_BANNER
     )
     public boolean manageFlags;
 
     @Permission(
             id = "use_beacon",
             name = "Use Beacon",
-            icon = MultiversionMaterials.BEACON
+            icon = XMaterial.BEACON
     )
     public boolean useBeacon;
 
     @Permission(
             id = "break_valuables",
             name = "Break Valuables",
-            icon = MultiversionMaterials.DIAMOND_PICKAXE
+            icon = XMaterial.DIAMOND_PICKAXE
     )
     public boolean breakValuables;
 
     @Permission(
             id = "use_enderpearl",
             name = "Use Enderpearl",
-            icon = MultiversionMaterials.ENDER_PEARL
+            icon = XMaterial.ENDER_PEARL
     )
     public boolean useEnderpearl;
 
     @Permission(
             id = "fall_damage",
             name = "Fall Damage",
-            icon = MultiversionMaterials.IRON_BOOTS
+            icon = XMaterial.IRON_BOOTS
     )
     public boolean fallDamage;
 
     @Permission(
             id = "flint_and_steel",
             name = "Flint and Steel",
-            icon = MultiversionMaterials.FLINT_AND_STEEL
+            icon = XMaterial.FLINT_AND_STEEL
     )
     public boolean flintAndSteel;
 
     @Permission(
             id = "fish",
             name = "Fish",
-            icon = MultiversionMaterials.FISHING_ROD
+            icon = XMaterial.FISHING_ROD
     )
     public boolean fish;
 
     @Permission(
             id = "use_item_frames",
             name = "Use Item Frames",
-            icon = MultiversionMaterials.ITEM_FRAME
+            icon = XMaterial.ITEM_FRAME
     )
     public boolean useItemFrames;
 
     @Permission(
             id = "leash",
             name = "Use Leash",
-            icon = MultiversionMaterials.LEAD
+            icon = XMaterial.LEAD
     )
     public boolean leash;
 
     @Permission(
             id = "milk",
             name = "Milk Cows",
-            icon = MultiversionMaterials.MILK_BUCKET
+            icon = XMaterial.MILK_BUCKET
     )
     public boolean milk;
 
     @Permission(
             id = "use_vehicles",
             name = "Use Vehicles",
-            icon = MultiversionMaterials.OAK_BOAT
+            icon = XMaterial.OAK_BOAT
     )
     public boolean useVehicles;
 
     @Permission(
             id = "pvp",
             name = "PVP",
-            icon = MultiversionMaterials.DIAMOND_SWORD
+            icon = XMaterial.DIAMOND_SWORD
     )
     public boolean pvp;
 
     @Permission(
             id = "sethome",
             name = "Set Home",
-            icon = MultiversionMaterials.RED_BED
+            icon = XMaterial.RED_BED
     )
     public boolean sethome;
 
     @Permission(
             id = "spawn_eggs",
             name = "Spawn Eggs",
-            icon = MultiversionMaterials.BAT_SPAWN_EGG
+            icon = XMaterial.BAT_SPAWN_EGG
     )
     public boolean spawnEggs;
 
     @Permission(
             id = "throw_potions",
             name = "Throw Potions",
-            icon = MultiversionMaterials.POTION
+            icon = XMaterial.POTION
     )
     public boolean throwPotions;
 
     @Permission(
             id = "use_shears",
             name = "Use Shears",
-            icon = MultiversionMaterials.SHEARS
+            icon = XMaterial.SHEARS
     )
     public boolean useShears;
 
     @Permission(
             id = "use_lava_bucket",
             name = "Use Lava Bucket",
-            icon = MultiversionMaterials.LAVA_BUCKET
+            icon = XMaterial.LAVA_BUCKET
     )
     public boolean useLavaBucket;
 
     @Permission(
             id = "use_water_bucket",
             name = "Use Water Bucket",
-            icon = MultiversionMaterials.WATER_BUCKET
+            icon = XMaterial.WATER_BUCKET
     )
     public boolean useWaterBucket;
 
     @Permission(
             id = "throw_chicken_egg",
             name = "Throw Chicken Eggs",
-            icon = MultiversionMaterials.EGG
+            icon = XMaterial.EGG
     )
     public boolean throwChickenEgg;
 
     @Permission(
             id = "use_anvil",
             name = "Use Anvil",
-            icon = MultiversionMaterials.ANVIL
+            icon = XMaterial.ANVIL
     )
     public boolean useAnvil;
 
     @Permission(
             id = "redstone",
             name = "Use Redstone",
-            icon = MultiversionMaterials.REDSTONE
+            icon = XMaterial.REDSTONE
     )
     public boolean redstone;
 
     @Permission(
             id = "armor_stand",
             name = "Use Armor Stand",
-            icon = MultiversionMaterials.ARMOR_STAND
+            icon = XMaterial.ARMOR_STAND
     )
     public boolean useArmorStand;
 

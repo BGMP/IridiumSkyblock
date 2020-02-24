@@ -1,7 +1,7 @@
 package com.iridium.iridiumskyblock.configs;
 
 import com.iridium.iridiumskyblock.MissionType;
-import com.iridium.iridiumskyblock.MultiversionMaterials;
+import com.iridium.iridiumskyblock.XMaterial;
 import org.bukkit.CropState;
 
 import java.util.Arrays;
@@ -24,11 +24,11 @@ public class Missions {
             put(5, new Mission(15, 10000, 10000, MissionType.VALUE_INCREASE, Collections.emptyList()));
         }});
         put("Miner", new HashMap<Integer, Mission>() {{
-            put(1, new Mission(1, 10000, 50, MissionType.BLOCK_BREAK, Arrays.asList(MultiversionMaterials.COAL_ORE.toString(), MultiversionMaterials.DIAMOND_ORE.toString(), MultiversionMaterials.EMERALD_ORE.toString(), MultiversionMaterials.GOLD_ORE.toString(), MultiversionMaterials.IRON_ORE.toString(), MultiversionMaterials.LAPIS_ORE.toString(), MultiversionMaterials.NETHER_QUARTZ_ORE.toString(), MultiversionMaterials.REDSTONE_ORE.toString())));
-            put(2, new Mission(5, 10000, 100, MissionType.BLOCK_BREAK, Arrays.asList(MultiversionMaterials.COAL_ORE.toString(), MultiversionMaterials.DIAMOND_ORE.toString(), MultiversionMaterials.EMERALD_ORE.toString(), MultiversionMaterials.GOLD_ORE.toString(), MultiversionMaterials.IRON_ORE.toString(), MultiversionMaterials.LAPIS_ORE.toString(), MultiversionMaterials.NETHER_QUARTZ_ORE.toString(), MultiversionMaterials.REDSTONE_ORE.toString())));
-            put(3, new Mission(10, 10000, 500, MissionType.BLOCK_BREAK, Arrays.asList(MultiversionMaterials.COAL_ORE.toString(), MultiversionMaterials.DIAMOND_ORE.toString(), MultiversionMaterials.EMERALD_ORE.toString(), MultiversionMaterials.GOLD_ORE.toString(), MultiversionMaterials.IRON_ORE.toString(), MultiversionMaterials.LAPIS_ORE.toString(), MultiversionMaterials.NETHER_QUARTZ_ORE.toString(), MultiversionMaterials.REDSTONE_ORE.toString())));
-            put(4, new Mission(15, 10000, 1000, MissionType.BLOCK_BREAK, Arrays.asList(MultiversionMaterials.COAL_ORE.toString(), MultiversionMaterials.DIAMOND_ORE.toString(), MultiversionMaterials.EMERALD_ORE.toString(), MultiversionMaterials.GOLD_ORE.toString(), MultiversionMaterials.IRON_ORE.toString(), MultiversionMaterials.LAPIS_ORE.toString(), MultiversionMaterials.NETHER_QUARTZ_ORE.toString(), MultiversionMaterials.REDSTONE_ORE.toString())));
-            put(5, new Mission(15, 10000, 2000, MissionType.BLOCK_BREAK, Arrays.asList(MultiversionMaterials.COAL_ORE.toString(), MultiversionMaterials.DIAMOND_ORE.toString(), MultiversionMaterials.EMERALD_ORE.toString(), MultiversionMaterials.GOLD_ORE.toString(), MultiversionMaterials.IRON_ORE.toString(), MultiversionMaterials.LAPIS_ORE.toString(), MultiversionMaterials.NETHER_QUARTZ_ORE.toString(), MultiversionMaterials.REDSTONE_ORE.toString())));
+            put(1, new Mission(1, 10000, 50, MissionType.BLOCK_BREAK, Arrays.asList(XMaterial.COAL_ORE.toString(), XMaterial.DIAMOND_ORE.toString(), XMaterial.EMERALD_ORE.toString(), XMaterial.GOLD_ORE.toString(), XMaterial.IRON_ORE.toString(), XMaterial.LAPIS_ORE.toString(), XMaterial.NETHER_QUARTZ_ORE.toString(), XMaterial.REDSTONE_ORE.toString())));
+            put(2, new Mission(5, 10000, 100, MissionType.BLOCK_BREAK, Arrays.asList(XMaterial.COAL_ORE.toString(), XMaterial.DIAMOND_ORE.toString(), XMaterial.EMERALD_ORE.toString(), XMaterial.GOLD_ORE.toString(), XMaterial.IRON_ORE.toString(), XMaterial.LAPIS_ORE.toString(), XMaterial.NETHER_QUARTZ_ORE.toString(), XMaterial.REDSTONE_ORE.toString())));
+            put(3, new Mission(10, 10000, 500, MissionType.BLOCK_BREAK, Arrays.asList(XMaterial.COAL_ORE.toString(), XMaterial.DIAMOND_ORE.toString(), XMaterial.EMERALD_ORE.toString(), XMaterial.GOLD_ORE.toString(), XMaterial.IRON_ORE.toString(), XMaterial.LAPIS_ORE.toString(), XMaterial.NETHER_QUARTZ_ORE.toString(), XMaterial.REDSTONE_ORE.toString())));
+            put(4, new Mission(15, 10000, 1000, MissionType.BLOCK_BREAK, Arrays.asList(XMaterial.COAL_ORE.toString(), XMaterial.DIAMOND_ORE.toString(), XMaterial.EMERALD_ORE.toString(), XMaterial.GOLD_ORE.toString(), XMaterial.IRON_ORE.toString(), XMaterial.LAPIS_ORE.toString(), XMaterial.NETHER_QUARTZ_ORE.toString(), XMaterial.REDSTONE_ORE.toString())));
+            put(5, new Mission(15, 10000, 2000, MissionType.BLOCK_BREAK, Arrays.asList(XMaterial.COAL_ORE.toString(), XMaterial.DIAMOND_ORE.toString(), XMaterial.EMERALD_ORE.toString(), XMaterial.GOLD_ORE.toString(), XMaterial.IRON_ORE.toString(), XMaterial.LAPIS_ORE.toString(), XMaterial.NETHER_QUARTZ_ORE.toString(), XMaterial.REDSTONE_ORE.toString())));
         }});
         put("Farmer", new HashMap<Integer, Mission>() {{
             put(1, new Mission(1, 10000, 50, MissionType.BLOCK_BREAK, Collections.singletonList(CropState.RIPE.toString())));

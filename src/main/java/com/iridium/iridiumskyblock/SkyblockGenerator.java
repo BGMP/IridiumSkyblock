@@ -16,7 +16,7 @@ class SkyblockGenerator extends ChunkGenerator {
     @Override
     public ChunkData generateChunkData(World world, Random random, int cx, int cz, BiomeGrid biome) {
         ChunkData chunkData = createChunkData(world);
-        Biome b = world.getName().equals(IridiumSkyblock.getConfiguration().worldName + "_nether") ? IridiumSkyblock.getConfiguration().netherBiome : IridiumSkyblock.getConfiguration().defaultBiome;
+        Biome b = world.getName().equals(IridiumSkyblock.getConfiguration().worldName + "_nether") ? IridiumSkyblock.getConfiguration().defaultNetherBiome.parseBiome() : IridiumSkyblock.getConfiguration().defaultBiome.parseBiome();
         for (int x = 0; x <= 15; x++) {
             for (int z = 0; z <= 15; z++) {
                 biome.setBiome(x, z, b);
@@ -26,7 +26,6 @@ class SkyblockGenerator extends ChunkGenerator {
         return chunkData;
     }
 
-    @Override
     public byte[][] generateBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
         if (blockSections == null) {
             blockSections = new byte[world.getMaxHeight() / 16][];

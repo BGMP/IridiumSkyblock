@@ -1,42 +1,41 @@
 package com.iridium.iridiumskyblock;
 
 import com.iridium.iridiumskyblock.gui.GlobalPermission;
-import com.iridium.iridiumskyblock.gui.Permission;
 
 public class GlobalPermissions {
 
     @GlobalPermission(
             id = "explosion_damage",
             name = "Explosion Damage",
-            icon = MultiversionMaterials.TNT
+            icon = XMaterial.TNT
     )
     public boolean explosionDamage;
 
     @GlobalPermission(
             id = "explosion_damage",
             name = "Fire Spread",
-            icon = MultiversionMaterials.FIRE_CHARGE
+            icon = XMaterial.FIRE_CHARGE
     )
     public boolean fireSpread;
 
     @GlobalPermission(
             id = "animal_spawning",
             name = "Animal Spawning",
-            icon = MultiversionMaterials.CARROT_ON_A_STICK
+            icon = XMaterial.CARROT_ON_A_STICK
     )
     public boolean animalSpawning;
 
     @GlobalPermission(
             id = "monster_spawning",
             name = "Monster Spawning",
-            icon = MultiversionMaterials.BLAZE_ROD
+            icon = XMaterial.BLAZE_ROD
     )
     public boolean mobSpawning;
 
     @GlobalPermission(
             id = "breed_animals",
             name = "Breed Animals",
-            icon = MultiversionMaterials.WHEAT
+            icon = XMaterial.WHEAT
     )
     public boolean breedAnimals;
 

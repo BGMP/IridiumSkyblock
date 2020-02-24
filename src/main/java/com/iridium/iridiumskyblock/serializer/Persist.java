@@ -3,11 +3,9 @@ package com.iridium.iridiumskyblock.serializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.iridium.iridiumskyblock.IridiumSkyblock;
-import com.iridium.iridiumskyblock.MultiversionMaterials;
-import com.iridium.iridiumskyblock.serializer.typeadapter.EnumTypeAdapter;
-import com.iridium.iridiumskyblock.serializer.typeadapter.InventoryTypeAdapter;
-import com.iridium.iridiumskyblock.serializer.typeadapter.LocationTypeAdapter;
-import com.iridium.iridiumskyblock.serializer.typeadapter.MultiversionMaterialsTypeAdapter;
+import com.iridium.iridiumskyblock.XBiome;
+import com.iridium.iridiumskyblock.XMaterial;
+import com.iridium.iridiumskyblock.serializer.typeadapter.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
@@ -45,7 +43,8 @@ public class Persist {
                 .registerTypeAdapter(Location.class, new LocationTypeAdapter())
                 .registerTypeAdapter(Inventory.class, new InventoryTypeAdapter())
                 .registerTypeAdapterFactory(EnumTypeAdapter.ENUM_FACTORY)
-                .registerTypeAdapter(MultiversionMaterials.class, new MultiversionMaterialsTypeAdapter());
+                .registerTypeAdapter(XMaterial.class, new XMaterialsTypeAdapter())
+                .registerTypeAdapter(XBiome.class, new XBiomeTypeAdapter());
     }
 
     // ------------------------------------------------------------ //

@@ -6,6 +6,7 @@ import com.iridium.iridiumskyblock.gui.LanguagesGUI;
 import com.iridium.iridiumskyblock.gui.TopGUI;
 import com.iridium.iridiumskyblock.gui.VisitGUI;
 import com.iridium.iridiumskyblock.listeners.*;
+import com.iridium.iridiumskyblock.nms.NMS;
 import com.iridium.iridiumskyblock.placeholders.ClipPlaceholderAPIManager;
 import com.iridium.iridiumskyblock.placeholders.MVDWPlaceholderAPIManager;
 import com.iridium.iridiumskyblock.serializer.Persist;
@@ -117,8 +118,23 @@ public class IridiumSkyblock extends JavaPlugin {
         return persist;
     }
 
+    public static NMS nms;
+
     @Override
     public void onEnable() {
+        try {
+            nms = (NMS) Class.forName("com.iridium.iridiumskyblock.nms." + Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]).newInstance();
+        } catch (ClassNotFoundException e) {
+            //Unsupported Version
+            getLogger().info("Unsupported Version Detected: " + Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
+            getLogger().info("Try updating from spigot");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        } catch (IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
         try {
             generator = new SkyblockGenerator();
             instance = this;
@@ -340,8 +356,7 @@ public class IridiumSkyblock extends JavaPlugin {
     public String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//dd/MM/yyyy
         Date now = new Date();
-        String strDate = sdfDate.format(now);
-        return strDate;
+        return sdfDate.format(now);
     }
 
     public Date getLocalDateTime(String time) {
@@ -405,6 +420,7 @@ public class IridiumSkyblock extends JavaPlugin {
     }
 
     public void islandValueManager() {
+        //Loop through all online islands and make sure Island#valuableBlocks is accurate
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             ListIterator<Integer> islands = new ArrayList<>(islandManager.islands.keySet()).listIterator();
 
@@ -425,23 +441,6 @@ public class IridiumSkyblock extends JavaPlugin {
                 }
             }
         }, 0, 0);
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-            ListIterator<Integer> islands = new ArrayList<>(islandManager.islands.keySet()).listIterator();
-
-            @Override
-            public void run() {
-                if (!islands.hasNext()) {
-                    islands = new ArrayList<>(islandManager.islands.keySet()).listIterator();
-                }
-                if (islands.hasNext()) {
-                    int id = islands.next();
-                    Island island = IridiumSkyblock.getIslandManager().getIslandViaId(id);
-                    if (island != null) {
-                        island.calculateIslandValue();
-                    }
-                }
-            }
-        }, 0, IridiumSkyblock.getConfiguration().islandsUpdateInterval);
     }
 
     public void sendErrorMessage(Exception e) {
@@ -476,15 +475,15 @@ public class IridiumSkyblock extends JavaPlugin {
         File schematicFolder = new File(getDataFolder(), "schematics");
         if (!schematicFolder.exists()) {
             schematicFolder.mkdir();
-            if (!new File(schematicFolder, "island.schematic").exists()) {
-                if (getResource("schematics/island.schematic") != null) {
-                    saveResource("schematics/island.schematic", false);
-                }
+        }
+        if (!new File(schematicFolder, "island.schematic").exists()) {
+            if (getResource("schematics/island.schematic") != null) {
+                saveResource("schematics/island.schematic", false);
             }
-            if (!new File(schematicFolder, "nether.schematic").exists()) {
-                if (getResource("schematics/nether.schematic") != null) {
-                    saveResource("schematics/nether.schematic", false);
-                }
+        }
+        if (!new File(schematicFolder, "nether.schematic").exists()) {
+            if (getResource("schematics/nether.schematic") != null) {
+                saveResource("schematics/nether.schematic", false);
             }
         }
 
@@ -530,16 +529,16 @@ public class IridiumSkyblock extends JavaPlugin {
 
         if (shop.shop == null) shop = new Shop();
 
-        getBlockValues().blockvalue.remove(MultiversionMaterials.AIR);
+        getBlockValues().blockvalue.remove(XMaterial.AIR);
 
         if (getBoosters().spawnerBooster.time == 0) getBoosters().spawnerBooster.time = 3600;
 
         if (getConfiguration().blockvalue != null) {
-            getBlockValues().blockvalue = (HashMap<MultiversionMaterials, Integer>) getConfiguration().blockvalue.clone();
+            getBlockValues().blockvalue = (HashMap<XMaterial, Double>) getConfiguration().blockvalue.clone();
             getConfiguration().blockvalue = null;
         }
         if (getConfiguration().spawnervalue != null) {
-            getBlockValues().spawnervalue = (HashMap<String, Integer>) getConfiguration().spawnervalue.clone();
+            getBlockValues().spawnervalue = (HashMap<String, Double>) getConfiguration().spawnervalue.clone();
             getConfiguration().spawnervalue = null;
         }
         int max = 0;
@@ -579,6 +578,7 @@ public class IridiumSkyblock extends JavaPlugin {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        getConfiguration().biomes.sort(Comparator.comparing(XBiome::toString));
         return true;
     }
 

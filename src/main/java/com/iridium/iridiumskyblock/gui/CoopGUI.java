@@ -29,6 +29,7 @@ public class CoopGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         islands.clear();
         Island island = getIsland();
         if (island != null) {

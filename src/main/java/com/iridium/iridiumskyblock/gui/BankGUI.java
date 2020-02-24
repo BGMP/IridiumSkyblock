@@ -20,6 +20,7 @@ public class BankGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         if (IridiumSkyblock.getIslandManager().islands.containsKey(islandID)) {
             setItem(IridiumSkyblock.getInventories().deposit.slot == null ? 11 : IridiumSkyblock.getInventories().deposit.slot, Utils.makeItemHidden(IridiumSkyblock.getInventories().deposit, getIsland()));
             setItem(IridiumSkyblock.getInventories().withdraw.slot == null ? 13 : IridiumSkyblock.getInventories().withdraw.slot, Utils.makeItemHidden(IridiumSkyblock.getInventories().withdraw, getIsland()));

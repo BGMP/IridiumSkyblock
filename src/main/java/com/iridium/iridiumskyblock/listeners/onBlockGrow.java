@@ -2,8 +2,8 @@ package com.iridium.iridiumskyblock.listeners;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.XBlock;
 import org.bukkit.CropState;
-import org.bukkit.Material;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +18,7 @@ public class onBlockGrow implements Listener {
             Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getBlock().getLocation());
             if (island != null) {
                 if (island.getFarmingBooster() != 0) {
-                    if (e.getBlock().getType().equals(Material.CROPS)) {
+                    if (XBlock.isCrops(e.getBlock().getType())) {
                         e.setCancelled(true);
                         Crops c = new Crops(CropState.RIPE);
                         BlockState bs = e.getBlock().getState();

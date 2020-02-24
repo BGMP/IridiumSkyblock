@@ -58,7 +58,7 @@ public class onPlayerInteractAtEntity implements Listener {
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseItemFrames.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 event.setCancelled(true);
             }
-        } else if (mainHand == Material.LEASH || offHand == Material.LEASH) {
+        } else if (mainHand == Material.LEAD || offHand == Material.LEAD) {
             if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).leash && !user.bypassing) {
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseLeash.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 event.setCancelled(true);

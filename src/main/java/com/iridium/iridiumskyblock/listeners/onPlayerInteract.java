@@ -2,7 +2,6 @@ package com.iridium.iridiumskyblock.listeners;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
-import com.iridium.iridiumskyblock.MultiversionMaterials;
 import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
@@ -47,22 +46,23 @@ public class onPlayerInteract implements Listener {
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseBeacon.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
                 event.setCancelled(true);
             }
-        } else if (clickedMaterial == Material.WOOD_BUTTON
+            // TODO: Add missing materials lost in mainstream conflicts's resolution
+        } else if (clickedMaterial == Material.LEGACY_WOOD_BUTTON
                 || clickedMaterial == Material.STONE_BUTTON
-                || clickedMaterial == Material.REDSTONE_COMPARATOR
-                || clickedMaterial == Material.REDSTONE_COMPARATOR_OFF
-                || clickedMaterial == Material.REDSTONE_COMPARATOR_ON
-                || clickedMaterial == Material.DIODE_BLOCK_ON
-                || clickedMaterial == Material.DIODE_BLOCK_OFF
+                || clickedMaterial == Material.COMPARATOR
+                || clickedMaterial == Material.LEGACY_REDSTONE_COMPARATOR_OFF
+                || clickedMaterial == Material.LEGACY_REDSTONE_COMPARATOR_ON
+                || clickedMaterial == Material.LEGACY_DIODE_BLOCK_ON
+                || clickedMaterial == Material.REPEATER
                 || clickedMaterial == Material.NOTE_BLOCK
                 || clickedMaterial == Material.HOPPER
                 || clickedMaterial == Material.HOPPER_MINECART
                 || clickedMaterial == Material.LEVER
-                || clickedMaterial == Material.FENCE_GATE
-                || clickedMaterial == Material.TRAP_DOOR
+                || clickedMaterial == Material.LEGACY_FENCE_GATE
+                || clickedMaterial == Material.LEGACY_TRAP_DOOR
                 || clickedMaterial == Material.DARK_OAK_DOOR
                 || clickedMaterial == Material.DAYLIGHT_DETECTOR
-                || clickedMaterial == Material.DAYLIGHT_DETECTOR_INVERTED
+                || clickedMaterial == Material.LEGACY_DAYLIGHT_DETECTOR_INVERTED
         ) {
             if (!island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).redstone && !user.bypassing) {
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().cantUseBeacon.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));

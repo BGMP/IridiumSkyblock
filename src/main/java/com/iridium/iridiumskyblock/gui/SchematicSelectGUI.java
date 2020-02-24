@@ -18,6 +18,7 @@ public class SchematicSelectGUI extends GUI implements Listener {
     @Override
     public void addContent() {
         super.addContent();
+        if (getInventory().getViewers().isEmpty()) return;
         if (IridiumSkyblock.getIslandManager().islands.containsKey(islandID)) {
             int i = 0;
             for (Schematics.FakeSchematic fakeSchematic : IridiumSkyblock.getSchematics().schematics) {
@@ -25,7 +26,7 @@ public class SchematicSelectGUI extends GUI implements Listener {
                 try {
                     setItem(fakeSchematic.slot, Utils.makeItem(fakeSchematic.item, 1, fakeSchematic.displayname, fakeSchematic.lore));
                 } catch (Exception e) {
-                    setItem(fakeSchematic.slot, Utils.makeItem(MultiversionMaterials.STONE, 1, fakeSchematic.displayname, fakeSchematic.lore));
+                    setItem(fakeSchematic.slot, Utils.makeItem(XMaterial.STONE, 1, fakeSchematic.displayname, fakeSchematic.lore));
                 }
                 i++;
             }

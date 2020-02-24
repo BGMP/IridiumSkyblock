@@ -31,6 +31,7 @@ public abstract class GUI {
     }
 
     public void addContent() {
+        if (inventory.getViewers().isEmpty()) return;
         for (int i = 0; i < inventory.getSize(); i++) {
             if (inventory.getItem(i) == null || inventory.getItem(i).getType().equals(Material.AIR)) {
                 setItem(i, Utils.makeItemHidden(IridiumSkyblock.getInventories().background));

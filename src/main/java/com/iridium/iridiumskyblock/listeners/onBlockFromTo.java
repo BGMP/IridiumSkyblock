@@ -2,7 +2,7 @@ package com.iridium.iridiumskyblock.listeners;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
-import com.iridium.iridiumskyblock.MultiversionMaterials;
+import com.iridium.iridiumskyblock.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,10 +19,10 @@ public class onBlockFromTo implements Listener {
 
     @EventHandler
     public void onBlockFromTo(BlockFromToEvent e) {
-        if(e.getBlock().getType().equals(Material.WATER) || e.getBlock().getType().equals(Material.LAVA)){
+        if (e.getBlock().getType().equals(Material.WATER) || e.getBlock().getType().equals(Material.LAVA)) {
             Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getBlock().getLocation());
-            if(island != null){
-                if(island!=IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getToBlock().getLocation())){
+            if (island != null) {
+                if (island != IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getToBlock().getLocation())) {
                     e.setCancelled(true);
                 }
             }
@@ -42,11 +42,9 @@ public class onBlockFromTo implements Listener {
                             Random r = new Random();
                             ArrayList<String> items = new ArrayList<>(e.getBlock().getLocation().getWorld().equals(IridiumSkyblock.getIslandManager().getWorld()) ? IridiumSkyblock.oreUpgradeCache.get(island.getOreLevel()) : IridiumSkyblock.netherOreUpgradeCache.get(island.getOreLevel()));
                             String item = items.get(r.nextInt(items.size()));
-                            MultiversionMaterials material = MultiversionMaterials.fromString(item);
-                            if (material == null) return;
+                            XMaterial material = XMaterial.valueOf(item);
                             e.setCancelled(true);
-                            b.setType(material.parseMaterial());
-                            b.setData((byte) material.data);
+                            b.setType(material.parseMaterial(true));
                             b.getState().update(true);
                         }
                     }
