@@ -2,6 +2,7 @@ package com.iridium.iridiumskyblock.commands;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
 import com.iridium.iridiumskyblock.support.Vault;
@@ -34,7 +35,10 @@ public class DepositCommand extends Command {
 
         User user = User.getUser(player);
         Island island = user.getIsland();
-        if (island == null) player.sendMessage(ChatColor.RED + "You must have an island to deposit your money into!");
+        if (island == null) {
+            player.sendMessage(ChatColor.RED + "You must have an island to deposit your money into!");
+            return;
+        }
 
         String amountInput = args[1];
         try {
@@ -44,7 +48,7 @@ public class DepositCommand extends Command {
                 return;
             }
 
-            if (Vault.econ.getBalance(player) >= amount) {
+            if (Vault.econ.getBalance(player) >= amount && (island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).depositBank && !user.bypassing)) {
                 island.money += amount;
                 Vault.econ.withdrawPlayer(player, amount);
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().depositSuccess.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix).replace("%amount%", amountInput)));

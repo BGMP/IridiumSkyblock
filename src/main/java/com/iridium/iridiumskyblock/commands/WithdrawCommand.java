@@ -2,6 +2,7 @@ package com.iridium.iridiumskyblock.commands;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
 import com.iridium.iridiumskyblock.support.Vault;
@@ -49,7 +50,7 @@ public class WithdrawCommand extends Command {
                 return;
             }
 
-            if (island.money > amount) {
+            if (island.money > amount && (island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).withdrawBank && !user.bypassing)) {
                 island.money -= amount;
                 Vault.econ.depositPlayer(player, amount);
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().withdrawCommand.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix).replace("%amount%", amountInput)));

@@ -89,6 +89,13 @@ public class Permissions {
     public boolean withdrawBank;
 
     @Permission(
+            id = "deposit_bank",
+            name = "Deposit Bank",
+            icon = XMaterial.IRON_INGOT
+    )
+    public boolean depositBank;
+
+    @Permission(
             id = "kill_mobs",
             name = "Kill Mobs",
             icon = XMaterial.IRON_SWORD
@@ -282,6 +289,7 @@ public class Permissions {
                        boolean useWarps,
                        boolean coop,
                        boolean withdrawBank,
+                       boolean depositBank,
                        boolean killMobs,
                        boolean pickupItems,
                        boolean fly,
@@ -321,6 +329,7 @@ public class Permissions {
         this.useWarps = useWarps;
         this.coop = coop;
         this.withdrawBank = withdrawBank;
+        this.depositBank = depositBank;
         this.killMobs = killMobs;
         this.pickupItems = pickupItems;
         this.fly = fly;
@@ -362,6 +371,7 @@ public class Permissions {
         useWarps = true;
         coop = true;
         withdrawBank = true;
+        depositBank = true;
         killMobs = true;
         pickupItems = true;
         fly = true;
