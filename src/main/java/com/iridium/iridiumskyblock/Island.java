@@ -61,7 +61,6 @@ public class Island {
 
     private transient UpgradeGUI upgradeGUI;
     private transient BoosterGUI boosterGUI;
-    private transient MissionsGUI missionsGUI;
     private transient MembersGUI membersGUI;
     private transient WarpGUI warpGUI;
     private transient BorderColorGUI borderColorGUI;
@@ -446,7 +445,6 @@ public class Island {
 
         upgradeGUI = new UpgradeGUI(this);
         boosterGUI = new BoosterGUI(this);
-        missionsGUI = new MissionsGUI(this);
         membersGUI = new MembersGUI(this);
         warpGUI = new WarpGUI(this);
         borderColorGUI = new BorderColorGUI(this);
@@ -708,7 +706,6 @@ public class Island {
 
         Bukkit.getScheduler().cancelTask(getMembersGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getBoosterGUI().scheduler);
-        Bukkit.getScheduler().cancelTask(getMissionsGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getUpgradeGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getWarpGUI().scheduler);
         Bukkit.getScheduler().cancelTask(getPermissionsGUI().scheduler);
@@ -1018,10 +1015,6 @@ public class Island {
 
     public SchematicSelectGUI getSchematicSelectGUI() {
         return schematicSelectGUI;
-    }
-
-    public MissionsGUI getMissionsGUI() {
-        return missionsGUI;
     }
 
     public MembersGUI getMembersGUI() {
