@@ -69,7 +69,7 @@ public class Inventories {
     public Item back = new Item(XMaterial.NETHER_STAR, 1, "&c&lBack", new ArrayList<>());
 
     public Item islandmember = new Item(XMaterial.PLAYER_HEAD, 1, "&b&l{player}", "{player}", Arrays.asList("&bRole: {role}", "", "&b&l[!] &bLeft Click to {demote}" + " this Player.", "&b&l[!] &bRight Click to Promote this Player."));
-    public Item islandcoop = new Item(XMaterial.PLAYER_HEAD, 1, "&b&l{player}", "{player}", Arrays.asList("&b&l * &7Island: &b{name}", "&b&l * &7Rank: &b{rank}", "&b&l * &7Value: &b{value}", "", "&b&l[!] &bLeft Click to Teleport to this island.", "&b&l[!] &bRight Click to un co-op this island."));
+    public Item islandcoop = new Item(XMaterial.PLAYER_HEAD, 1, "&b&l{player}", "{player}", Arrays.asList("&b&l * &7Island: &b{name}", "&b&l * &7Rank: &b{rank}", "&b&l * &7Value: &b{value}"));
     public Item[] islandRoles = {
             new Item(XMaterial.BEACON, 1, "&b&l{role}", Collections.emptyList()),
             new Item(XMaterial.EMERALD_BLOCK, 1, "&b&l{role}", Collections.emptyList()),
