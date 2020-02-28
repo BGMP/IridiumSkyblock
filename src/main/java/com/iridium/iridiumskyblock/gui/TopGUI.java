@@ -40,7 +40,6 @@ public class TopGUI extends GUI implements Listener {
             } else {
                 setItem(IridiumSkyblock.getConfiguration().islandTopSlots.get(i), Utils.makeItemHidden(IridiumSkyblock.getInventories().background));
             }
-            setItem(27, Utils.makeItemHidden(IridiumSkyblock.getInventories().goBackArrow));
         }
     }
 
@@ -50,11 +49,6 @@ public class TopGUI extends GUI implements Listener {
         if (e.getInventory().equals(getInventory())) {
             e.setCancelled(true);
             if (e.getClickedInventory() == null || !e.getClickedInventory().equals(getInventory())) return;
-            if (e.getSlot() == 27) {
-                e.getWhoClicked().closeInventory();
-                Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is");
-                return;
-            }
             if (islands.containsKey(e.getSlot())) {
                 e.getWhoClicked().closeInventory();
                 Island island = IridiumSkyblock.getIslandManager().getIslandViaId(islands.get(e.getSlot()));

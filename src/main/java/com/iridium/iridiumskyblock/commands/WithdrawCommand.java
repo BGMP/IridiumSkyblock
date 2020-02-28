@@ -34,7 +34,7 @@ public class WithdrawCommand extends Command {
         }
 
         User user = User.getUser(player);
-        Island island = user.getIsland();
+        Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(player.getLocation());
         if (island == null) {
             player.sendMessage(ChatColor.RED + "You must have an island to withdraw money from!");
             return;
@@ -50,7 +50,8 @@ public class WithdrawCommand extends Command {
                 return;
             }
 
-            if (island.money > amount && (island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).withdrawBank && !user.bypassing)) {
+            player.sendMessage("Permission status: " + String.valueOf((island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).withdrawBank && !user.bypassing)));
+            if (island.money >= amount && (island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).withdrawBank && !user.bypassing)) {
                 island.money -= amount;
                 Vault.econ.depositPlayer(player, amount);
                 player.sendMessage(Utils.color(IridiumSkyblock.getMessages().withdrawCommand.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix).replace("%amount%", amountInput)));

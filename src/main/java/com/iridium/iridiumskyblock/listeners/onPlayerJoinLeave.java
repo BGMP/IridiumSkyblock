@@ -2,6 +2,7 @@ package com.iridium.iridiumskyblock.listeners;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.Island;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.event.EventHandler;
@@ -20,14 +21,19 @@ public class onPlayerJoinLeave implements Listener {
         }
         User u = User.getUser(e.getPlayer());
         u.name = e.getPlayer().getName();
+        Island island = u.getIsland();
 
         if (u.flying && (u.getIsland() == null || u.getIsland().getFlightBooster() == 0)) {
-            e.getPlayer().setAllowFlight(false);
-            e.getPlayer().setFlying(false);
-            u.flying = false;
+            if (island != null) {
+                if ((!island.getPermissions((u.islandID == island.getId() || island.isCoop(u.getIsland())) ? (island.isCoop(u.getIsland()) ? Role.Member : u.getRole()) : Role.Visitor).fly) && !u.bypassing) {
+                    e.getPlayer().setAllowFlight(false);
+                    e.getPlayer().setFlying(false);
+                    u.flying = false;
+                }
+            }
         }
+
         u.bypassing = false;
-        Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(e.getPlayer().getLocation());
         if (island != null) {
             island.sendBorder(e.getPlayer());
         }

@@ -48,6 +48,7 @@ public class DepositCommand extends Command {
                 return;
             }
 
+            player.sendMessage("Permission status: " + String.valueOf((island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).depositBank && !user.bypassing)));
             if (Vault.econ.getBalance(player) >= amount && (island.getPermissions((user.islandID == island.getId() || island.isCoop(user.getIsland())) ? (island.isCoop(user.getIsland()) ? Role.Member : user.getRole()) : Role.Visitor).depositBank && !user.bypassing)) {
                 island.money += amount;
                 Vault.econ.withdrawPlayer(player, amount);

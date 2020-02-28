@@ -365,6 +365,14 @@ public class Island {
         if (startvalue == -1) startvalue = value;
     }
 
+    public void addValue(int addedValue) {
+        value += addedValue;
+    }
+
+    public void removeValue(int removedValue) {
+        value -= removedValue;
+    }
+
     public void addWarp(Player player, Location location, String name, String password) {
         if (warps.size() < 20) {
             warps.add(new Warp(location, name, password));
@@ -623,6 +631,11 @@ public class Island {
                 }
             }
         }
+
+        p.teleport(getHome());
+        sendBorder(p);
+
+        /*
         if (Utils.isSafe(getHome(), this)) {
             p.teleport(getHome());
             sendBorder(p);
@@ -637,6 +650,7 @@ public class Island {
                 pasteSchematic(p, false);
             }
         }
+        */
     }
 
     public void teleportNetherHome(Player p) {

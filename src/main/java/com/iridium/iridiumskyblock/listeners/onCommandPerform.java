@@ -23,7 +23,6 @@ public class onCommandPerform implements Listener {
                 Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(event.getPlayer().getLocation());
 
                 if (island != null) {
-                    player.sendMessage("island is not null");
                     if (u.islandID != island.getId()) {
                         if ((!island.getPermissions((u.islandID == island.getId() || island.isCoop(u.getIsland())) ? (island.isCoop(u.getIsland()) ? Role.Member : u.getRole()) : Role.Visitor).fly) && !u.bypassing)
                             event.setCancelled(true);

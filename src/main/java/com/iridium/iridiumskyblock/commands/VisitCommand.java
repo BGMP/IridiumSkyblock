@@ -1,6 +1,7 @@
 package com.iridium.iridiumskyblock.commands;
 
 import com.iridium.iridiumskyblock.IridiumSkyblock;
+import com.iridium.iridiumskyblock.Role;
 import com.iridium.iridiumskyblock.User;
 import com.iridium.iridiumskyblock.Utils;
 import org.bukkit.Bukkit;
@@ -29,6 +30,8 @@ public class VisitCommand extends Command {
             User user = User.getUser(player);
             if (user.getIsland() != null) {
                 if (user.getIsland().isVisit() || User.getUser(p).bypassing) {
+                    User visitor = User.getUser(p);
+                    visitor.role = Role.Visitor;
                     user.getIsland().teleportHome(p);
                 } else {
                     sender.sendMessage(Utils.color(IridiumSkyblock.getMessages().playersIslandIsPrivate.replace("%prefix%", IridiumSkyblock.getConfiguration().prefix)));
