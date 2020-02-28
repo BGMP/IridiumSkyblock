@@ -22,7 +22,7 @@ public class onPlayerInteract implements Listener {
 
         Player player = event.getPlayer();
         User user = User.getUser(player);
-        Island island = user.getIsland();
+        Island island = IridiumSkyblock.getIslandManager().getIslandViaLocation(player.getLocation());
 
         if (island == null) return;
 
