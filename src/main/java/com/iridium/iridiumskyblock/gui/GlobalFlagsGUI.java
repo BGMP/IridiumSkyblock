@@ -65,6 +65,9 @@ public class GlobalFlagsGUI extends GUI implements Listener {
                         field.setAccessible(true);
                         field.setBoolean(getIsland().getGlobals(), !(Boolean) object);
                         addContent();
+                    } else if (e.getSlot() == 45) {
+                        e.getWhoClicked().closeInventory();
+                        Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is flags");
                     }
                     i++;
                 }
@@ -73,9 +76,6 @@ public class GlobalFlagsGUI extends GUI implements Listener {
             }
         }
 
-        if (e.getSlot() == 45) {
-            e.getWhoClicked().closeInventory();
-            Bukkit.getServer().dispatchCommand(e.getWhoClicked(), "is flags");
-        }
+
     }
 }
